@@ -4,13 +4,15 @@ using System.Diagnostics;
 
 namespace Prestify.Web.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+    public class HomesController : Controller
+    { 
+        public HomesController()
         {
-            _logger = logger;
+        }
+
+        public IActionResult AnAction()
+        {
+            return View("SomethingDifferent");
         }
 
         public IActionResult Index()
