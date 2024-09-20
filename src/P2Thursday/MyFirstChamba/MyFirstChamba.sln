@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstChamba", "MyFirstChamba\MyFirstChamba.csproj", "{1F2A25B6-758E-4B9A-9543-69222F937CCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F2A25B6-758E-4B9A-9543-69222F937CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2A25B6-758E-4B9A-9543-69222F937CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F2A25B6-758E-4B9A-9543-69222F937CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F2A25B6-758E-4B9A-9543-69222F937CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54E227E3-E053-4AB5-948A-BF2FBE7A6C9C}
+	EndGlobalSection
+EndGlobal
