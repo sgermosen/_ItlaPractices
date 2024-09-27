@@ -30,6 +30,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Homes" asp-action="AnAction"> Go to one place</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="People" asp-action="Index"> People</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -37,9 +40,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            <h2>Un contenido</h2>
             @RenderBody()
-            <h2>Un contenido 2</h2> 
         </main>
     </div>
 

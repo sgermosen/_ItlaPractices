@@ -5,13 +5,16 @@ using System.Diagnostics;
 namespace Prestify.Web.Controllers
 {
     public class HomesController : Controller
-    { 
+    {
         public HomesController()
         {
         }
 
         public IActionResult AnAction()
         {
+            var emp = new Employee();
+            emp.Address = "here comes an address";
+
             return View("SomethingDifferent");
         }
 
