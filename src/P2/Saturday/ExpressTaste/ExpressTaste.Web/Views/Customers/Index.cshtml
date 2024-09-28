@@ -1,0 +1,69 @@
+﻿@* @using ExpressTaste.Web.Models.Entities *@
+@* @model List<ExpressTaste.Web.Models.Entities.Customer> *@
+@* @model List<Customer> *@
+@model CustomersViewModel
+
+@{
+    ViewData["Title"] = "Customer List";
+
+    //var infoOnlyActive = ViewBag.CustomerInformation as List<ExpressTaste.Web.Models.Entities.Customer>;
+}
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+<div class="text-center">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> Id</th>
+                <th> Name</th>
+                <th> Last Name</th>
+                <th> Actions</th>
+            </tr>
+        </thead>
+
+
+        <tr>
+            <td colspan="4"> All Customers</td>
+        </tr>
+        @foreach (var item in Model.AllCustomers)
+        {
+            <tr>
+                <td> @item.Id</td>
+                <td> @item.Name</td>
+                <td> @item.Lastname</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a  class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="4"> Active Customers</td>
+        </tr>
+        @if (Model.ActiveCustomers != null && Model.ActiveCustomers.Any())  //&& Model.ActiveCustomers.Count() > 0)
+        { 
+            @foreach (var item in Model.ActiveCustomers)
+            {
+                <tr>
+                    <td> @item.Id</td>
+                    <td> @item.Name</td>
+                    <td> @item.Lastname</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4"> No Records Found</td>
+            </tr>
+        }
+    </table>
+</div>
+

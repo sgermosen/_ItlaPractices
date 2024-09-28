@@ -1,3 +1,4 @@
+using ExpressTaste.Web.Data;
 using ExpressTaste.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -5,13 +6,17 @@ using System.Diagnostics;
 namespace ExpressTaste.Web.Controllers
 {
     public class HomeController : Controller
-    { 
-        public HomeController( )
+    {
+        private readonly ExpressTasteDbContext _db;
+
+        public HomeController(ExpressTasteDbContext db)
         { 
+            _db = db;
         }
 
         public IActionResult ShowMeSomething()
-        {
+        { 
+            
             return View("ShoMeAnotherThing");
         }
 

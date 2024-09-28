@@ -30,15 +30,19 @@
                                asp-action="ShowMeSomething"> Show me Something </a>
 
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Customers"
+                               asp-action="Index"> Customers </a>
+
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            <a href="/Home/Index"> ewewew </a>
-          
+        <main role="main" class="pb-3"> 
             @RenderBody()
         </main>
     </div>

@@ -1,8 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
+using ExpressTaste.Web.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+  
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
+    p.UseSqlServer(builder.Configuration.GetConnectionString("ExpressTasteStrConnection")));
+  
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
