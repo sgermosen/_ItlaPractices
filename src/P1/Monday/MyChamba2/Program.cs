@@ -1,143 +1,131 @@
-﻿decimal result;
-int typedOperation;
-decimal typedNumber1;
+﻿decimal typedNumber1;
 decimal typedNumber2;
 
+decimal result;
+//string capturedValue;
+int typedOption = 1;
+Console.WriteLine("This is the best calculator");
 
-Console.WriteLine("Welcome to The Best Calculator");
-Console.WriteLine("Type one number that represent your option:");
+Console.WriteLine("Please Type the option number than you want");
 Console.WriteLine("1. Sum, 2. Substract, 3. Multiplication, 4. Division, 5. Exit");
 
 try
 {
+    typedOption = Convert.ToInt32(Console.ReadLine());
 
+    //capturedValue = Console.ReadLine();
 
-    //string typedOperationInString = Console.ReadLine();
-    //int typedOperation =  Convert.ToInt32(typedOperationInString);
-    //int typedOperation = int.Parse(typedOperationInString);
-    //try
-    //{
-        typedOperation = Convert.ToInt32(Console.ReadLine());
-    //}
-    //catch (Exception ex)
-    //{
-    //    Console.WriteLine($"The typed option is not valid!!!: {ex.Message}");
-        //  throw; 
-          //typedOperation=1; 
-    //}
-    //finally
-    //{
-    //    Console.WriteLine("I Passed here");
-
-    //}
-
-    Console.WriteLine("Type the first number");
-
-    //try
-    //{
+    //typedNumber1 = Convert.ToDecimal(capturedValue);
+    //typedNumber1 = decimal.Parse(capturedValue);
+    //typedNumber1 = Convert.ToDecimal(Console.ReadLine());
+    //typedNumber1 = decimal.Parse(Console.ReadLine());
+    Console.WriteLine("Please Type the first number");
     typedNumber1 = Convert.ToDecimal(Console.ReadLine());
-    //}
-    //catch (Exception)
-    //{
-    //Console.WriteLine("The typed option is not valid!!!");
-    //    throw;
-    //}
-    Console.WriteLine("Type the second number");
-    //try
-    //{
+
+    Console.WriteLine("Please Type the second number");
     typedNumber2 = Convert.ToDecimal(Console.ReadLine());
-    //}
-    //catch (Exception)
+
+    /*
+     == :=
+     != <>
+     <
+     >
+     <=
+     >=
+    */
+    //result = 0;
+    //int tempInt = 15;
+
+    //if (typedOption == 1)
     //{
-    //Console.WriteLine("The typed option is not valid!!!");
-    //   throw;
-    //}
-
-    // (==) (!=) (<>) (<) (>) (<=) (>=)
-
-
-    //Multiples ifs to solve a situation
-    //if (typedOperation == 1)
-    //{
+    //     var tempInt2 = 15;
     //    result = typedNumber1 + typedNumber2;
+    //    Console.WriteLine(tempInt2);
     //}
-    //if (typedOperation == 2)
+    //if (typedOption == 2)
     //{
     //    result = typedNumber1 - typedNumber2;
+    //    //Console.WriteLine(tempInt); 
     //}
-    //if (typedOperation == 3)
+    //if (typedOption == 3)
     //{
     //    result = typedNumber1 * typedNumber2;
     //}
-    //if (typedOperation == 4)
+    //if (typedOption == 4)
     //{
     //    result = typedNumber1 / typedNumber2;
     //}
-
-
-    //nested ifs to mess everything
-    //if (typedOperation == 1)
+    ////if (typedOption == 5)
+    ////{
+    ////    result =0;
+    ////}
+    //nested ifs
+    //if (typedOption == 1)
     //{
+    //    var tempInt2 = 15;
     //    result = typedNumber1 + typedNumber2;
+    //    Console.WriteLine(tempInt2);
     //}
     //else
     //{
-    //    if (typedOperation == 2)
+    //    var tempInt2 = 15;
+    //    if (typedOption == 2)
     //    {
     //        result = typedNumber1 - typedNumber2;
+    //        Console.WriteLine(tempInt2);
     //    }
     //    else
     //    {
-    //        if (typedOperation == 3)
+    //        if (typedOption == 3)
     //        {
     //            result = typedNumber1 * typedNumber2;
+    //            Console.WriteLine(tempInt2);
     //        }
     //        else
     //        {
-    //            if (typedOperation == 4)
+    //            var temp2 = string.Empty;
+    //            if (typedOption == 4)
     //            {
     //                result = typedNumber1 / typedNumber2;
     //            }
-    //            // if (typedOperation == 5)
-    //            //{
-    //            //    result = 0;
-    //            //}
     //            else
     //            {
+    //                Console.WriteLine(tempInt2);
     //                result = 0;
+    //                //if (typedOption == 5)
+    //                //{
+    //                //    result = 0;
+    //                //}
+    //                //else { 
+    //                //    result = 0; 
+    //                //}
     //            }
     //        }
     //    }
     //}
 
-
-    //If with else ifs to simplify questions
-    //if (typedOperation == 1)
-    //{
-    //    result = typedNumber1 + typedNumber2;
+    //if (typedOption == 1)
+    //{ 
+    //    result = typedNumber1 + typedNumber2; 
     //}
-    //else if (typedOperation == 2)
+    //else if (typedOption == 2)
     //{
     //    result = typedNumber1 - typedNumber2;
     //}
-    //else if (typedOperation == 3)
+    //else if (typedOption == 3)
     //{
     //    result = typedNumber1 * typedNumber2;
     //}
-    //else if (typedOperation == 4)
+    //else if (typedOption == 4)
     //{
     //    result = typedNumber1 / typedNumber2;
     //}
-    ////else if (typedOperation == 5)
-    ////{
-    ////    result = 0;
-    ////}
     //else
     //{
-    //    result = 0;
+    //    result = 0; 
     //}
 
-    switch (typedOperation)
+    switch (typedOption)
     {
         case 1:
             result = typedNumber1 + typedNumber2;
@@ -149,38 +137,36 @@ try
             result = typedNumber1 * typedNumber2;
             break;
         case 4:
-            //try
-            //{
             result = typedNumber1 / typedNumber2;
-            //}
-            //catch (DivideByZeroException ex)
-            //{
-            //    Console.WriteLine($"No se puede dividir entre cero: {ex.Message}");
-            //    result = 0;
-            //}
-
             break;
         default:
             result = 0;
             break;
     }
-    Console.WriteLine($"The operation Result is: {result}");
 
-}
-catch (FormatException ex)
-{
-    Console.WriteLine($"Usted digitó algo mal: {ex.Message}");
+
+    //result = typedNumber1 + typedNumber2;
+
+    Console.WriteLine($"The Result of the operation is:{result}");
+
+
 }
 catch (DivideByZeroException ex)
 {
-    Console.WriteLine($"No se puede dividir entre cero: {ex.Message}");
+    Console.WriteLine($"you can not divide by zero: {ex.Message}");
+    //Console.WriteLine("Closing Db Conection");
 }
 catch (ArithmeticException ex)
 {
-    Console.WriteLine($"No se puede dividir entre cero: {ex.Message}");
+    Console.WriteLine($"you can not divide by zero: {ex.Message}");
+    //Console.WriteLine("Closing Db Conection");
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"There was an error in the program: {ex.Message}");
-    //throw;
+    Console.WriteLine($"You need to choose a correct option: {ex.Message}");
+    //Console.WriteLine("Closing Db Conection");
+}
+finally
+{
+    Console.WriteLine("Closing Db Conection");
 }
