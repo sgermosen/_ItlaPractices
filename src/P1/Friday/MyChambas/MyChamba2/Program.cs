@@ -8,6 +8,14 @@ Console.WriteLine("This is the best calculator");
 
 Console.WriteLine("Please Type the option number than you want");
 Console.WriteLine("1. Sum, 2. Substract, 3. Multiplication, 4. Division, 5. Exit");
+Console.WriteLine("---------------------------------------");
+Console.WriteLine("1. Sum");
+Console.WriteLine("2. Substract");
+Console.WriteLine("3. Multiplication");
+Console.WriteLine("4. Division");
+Console.WriteLine("5. Exit");
+Console.WriteLine("---------------------------------------"); 
+Console.WriteLine("1. Sum, \n 2. Substract,  \n 3. Multiplication,  \n 4. Division,  \n 5. Exit");
 
 try
 {

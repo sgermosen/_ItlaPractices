@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PaqJet.Web.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<PaqJetDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PaqJetStrDbConnection") ?? throw new InvalidOperationException("Connection string 'PaqJetDbContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
