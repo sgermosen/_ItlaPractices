@@ -1,0 +1,65 @@
+﻿@model EditPersonViewModel;
+
+
+<h1> Editing a Person</h1>
+
+
+ 
+    <form asp-action="Edit">
+    <input class="form-control" asp-for="Id" type="hidden" />
+
+        <div class="row">
+            <div class="form-group ">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label asp-for="Name" class="form-label col-md-2"> Name</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" asp-for="Name" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label asp-for="LastNames" class="form-label col-md-2"> LastNames</label>
+            <div class="col-md-2">
+                <input class="form-control " asp-for="LastNames" />
+            </div>
+        </div>
+         
+        <div class="form-group ">
+            <label asp-for="Dni" class="form-label col-md-2"> Rnc</label>
+            <div class="col-md-2">
+                <input class="form-control " asp-for="Dni" />
+            </div>
+        </div>
+         
+        <div class="form-group ">
+            <label asp-for="Address" class="form-label col-md-2"> Address</label>
+            <div class="col-md-2">
+                <textarea asp-for="Address" cols="3" class="form-control "> 
+                </textarea> 
+            </div>
+        </div>
+         
+        <div class="form-group ">
+            <label asp-for="Phone" class="form-label col-md-2"> Phone</label>
+            <div class="col-md-2">
+                <input class="form-control " asp-for="Phone" />
+            </div>
+        </div> 
+
+        <div class="form-group ">
+            <label asp-for="Email" class="form-label col-md-2"> Email</label>
+            <div class="col-md-2">
+                <input class="form-control " asp-for="Email" />
+            </div>
+        </div>
+
+    <input type="submit" class="btn btn-primary" value="Save" />
+    <a asp-action="Index" class="btn btn-secondary"> Cancel</a>
+    </form>
+
+ 
+

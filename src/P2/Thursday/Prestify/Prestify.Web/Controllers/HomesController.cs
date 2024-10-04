@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Prestify.Web.Models;
+using Prestify.Web.Models.Entities;
 using System.Diagnostics;
 
 namespace Prestify.Web.Controllers
@@ -13,7 +14,7 @@ namespace Prestify.Web.Controllers
         public IActionResult AnAction()
         {
             var emp = new Employee();
-            emp.Address = "here comes an address";
+           // emp.Address = "here comes an address";
 
             return View("SomethingDifferent");
         }
