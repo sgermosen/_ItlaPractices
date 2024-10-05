@@ -1,6 +1,6 @@
 ﻿using ExpressTaste.Web.Data;
-using ExpressTaste.Web.Models;
 using ExpressTaste.Web.Models.Entities;
+using ExpressTaste.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +21,7 @@ namespace ExpressTaste.Web.Controllers
             var allCustomers = _context.Customers.ToList();
             var activeCustomers = _context.Customers
                 .Where(c => c.IsActive && !c.IsActive).ToList();
-           // ViewBag.CustomerInformation = info2;
+            // ViewBag.CustomerInformation = info2;
 
             //vm.ActiveCustomers = activeCustomers;
             vm.AllCustomers = allCustomers;
@@ -29,7 +29,6 @@ namespace ExpressTaste.Web.Controllers
         }
 
 
-        // GET: Customers1/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,87 +46,84 @@ namespace ExpressTaste.Web.Controllers
             return View(customer);
         }
 
-        // GET: Customers1/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers1/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Customer customer)
+        public async Task<IActionResult> Create(CreateCustomerViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                var dbCustomer = new Customer();
+
+                dbCustomer.Name = vm.Name;
+                dbCustomer.Email = vm.Email;
+                dbCustomer.Phone = vm.Phone;
+                dbCustomer.Lastname = vm.Lastname;
+                dbCustomer.Gender = vm.Gender;
+                dbCustomer.IsActive = vm.IsActive;
+
+                _context.Customers.Add(dbCustomer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
 
-        // GET: Customers1/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        public async Task<IActionResult> Edit(int id)
+        { 
 
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var customerDb = await _context.Customers.FindAsync(id);
+            // var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+            if (customerDb == null)
             {
                 return NotFound();
             }
-            return View(customer);
+            var vm = new EditCustomerViewModel();
+            vm.Id = customerDb.Id;
+            vm.Name = customerDb.Name;
+            vm.Email = customerDb.Email;
+            vm.Phone = customerDb.Phone;
+            vm.Lastname = customerDb.Lastname;
+            vm.Gender = customerDb.Gender;
+            vm.IsActive = customerDb.IsActive;
+
+            return View(vm);
         }
 
-        // POST: Customers1/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Lastname,Email,Phone,IsActive,Gender")] Customer customer)
+        public async Task<IActionResult> Edit(int id, EditCustomerViewModel vm)
         {
-            if (id != customer.Id)
-            {
-                return NotFound();
-            }
+            //    if (identification != vm.Id)
+            //    {
+            //        return NotFound();
+            //    }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomerExists(customer.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                var dbCustomer = await _context.Customers.FindAsync(id);
+
+                dbCustomer.Name = vm.Name;
+                dbCustomer.Email = vm.Email;
+                dbCustomer.Phone = vm.Phone;
+                dbCustomer.Lastname = vm.Lastname;
+                dbCustomer.Gender = vm.Gender;
+                dbCustomer.IsActive = vm.IsActive;
+                _context.Customers.Update(dbCustomer);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(vm);
         }
 
         // GET: Customers1/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
@@ -138,10 +134,10 @@ namespace ExpressTaste.Web.Controllers
             return View(customer);
         }
 
-        // POST: Customers1/Delete/5
-        [HttpPost, ActionName("Delete")]
+
+        [HttpPost, ActionName(nameof(Delete))]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirm(int id)
         {
             var customer = await _context.Customers.FindAsync(id);
             if (customer != null)
@@ -153,9 +149,5 @@ namespace ExpressTaste.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
-        {
-            return _context.Customers.Any(e => e.Id == id);
-        }
     }
 }

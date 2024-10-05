@@ -1,6 +1,6 @@
 ﻿using ExpressTaste.Web.Models.Entities;
 
-namespace ExpressTaste.Web.Models
+namespace ExpressTaste.Web.Models.ViewModels
 {
     public class CustomersViewModel
     {

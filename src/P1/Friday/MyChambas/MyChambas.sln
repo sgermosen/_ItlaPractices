@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChamba2", "MyChamba2\MyChamba2.csproj", "{ED1B53AB-A2E3-4C65-986B-98510BB7DE24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba2", "MyChamba2\MyChamba2.csproj", "{ED1B53AB-A2E3-4C65-986B-98510BB7DE24}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba1", "MyChamba1\MyChamba1.csproj", "{27071F85-7443-4BB6-B316-0BB93CDD739A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChamba3", "MyChamba3\MyChamba3.csproj", "{E5559622-482A-4B04-94BC-BA2C1E39E1A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{27071F85-7443-4BB6-B316-0BB93CDD739A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27071F85-7443-4BB6-B316-0BB93CDD739A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27071F85-7443-4BB6-B316-0BB93CDD739A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5559622-482A-4B04-94BC-BA2C1E39E1A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5559622-482A-4B04-94BC-BA2C1E39E1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5559622-482A-4B04-94BC-BA2C1E39E1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5559622-482A-4B04-94BC-BA2C1E39E1A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
