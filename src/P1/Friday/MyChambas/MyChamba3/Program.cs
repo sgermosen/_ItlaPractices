@@ -1,6 +1,9 @@
 ﻿//decimal typedNumber1;
 //decimal typedNumber2;
-decimal[] typedNumbers = new decimal[2];
+//decimal[] typedNumbers = new decimal[2];
+List<decimal> typedNumbers = new List<decimal>();
+//typedNumbers.Add(0);
+//typedNumbers.Add(0);
 decimal result=0;
 int typedOption = 1;
 int wantToContinue = 0;
@@ -29,10 +32,12 @@ try
     typedOption = Convert.ToInt32(Console.ReadLine());
 
     Console.WriteLine("Please Type the first number");
-    typedNumbers[0] = Convert.ToDecimal(Console.ReadLine());
+    //typedNumbers[0] = Convert.ToDecimal(Console.ReadLine());
+    typedNumbers.Add(Convert.ToDecimal(Console.ReadLine()));
 
     Console.WriteLine("Please Type the second number");
-    typedNumbers[1] = Convert.ToDecimal(Console.ReadLine());
+   // typedNumbers[1] = Convert.ToDecimal(Console.ReadLine());
+    typedNumbers.Add(Convert.ToDecimal(Console.ReadLine()));
 
 
     //and &&     or ||     not  !
@@ -68,20 +73,22 @@ try
         wantToContinue = Convert.ToInt32(Console.ReadLine());
         if (wantToContinue == 1)
         {
-            //typedNumbers = new decimal[index + 1];
-            int quantityElementsInTheArray = typedNumbers.Length + 1;
-            var oldTypedNumbers = typedNumbers;
-            typedNumbers = new decimal[quantityElementsInTheArray];
+            ////typedNumbers = new decimal[index + 1];
+            //int quantityElementsInTheArray = typedNumbers.Length + 1;
+            int quantityElementsInTheArray = typedNumbers.Count + 1;
+            //var oldTypedNumbers = typedNumbers;
+            //typedNumbers = new decimal[quantityElementsInTheArray];
 
-            for (int i = 0; i < oldTypedNumbers.Length; i++)
-            {
-                typedNumbers[i] = oldTypedNumbers[i]; 
-            }
+            //for (int i = 0; i < oldTypedNumbers.Length; i++)
+            //{
+            //    typedNumbers[i] = oldTypedNumbers[i]; 
+            //}
             Console.WriteLine("Please Type another number");
-            typedNumbers[index] = Convert.ToDecimal(Console.ReadLine());
-            //index = index + 1;
-            //index += 1;
-            index++;
+            //typedNumbers[index] = Convert.ToDecimal(Console.ReadLine());
+            typedNumbers.Add(Convert.ToDecimal(Console.ReadLine()));
+            ////index = index + 1;
+            ////index += 1;
+            //index++;
         }
     }
      
