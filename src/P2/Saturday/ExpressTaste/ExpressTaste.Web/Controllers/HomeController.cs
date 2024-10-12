@@ -8,7 +8,7 @@ namespace ExpressTaste.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ExpressTasteDbContext _db;
-
+         
         public HomeController(ExpressTasteDbContext db)
         { 
             _db = db;
