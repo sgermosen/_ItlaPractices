@@ -139,44 +139,48 @@ namespace Prestify.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Delete(int id)
+        [HttpPost] 
+        public IActionResult Delete(int peopleId)
         {
-            var person = _context.People.FirstOrDefault(p => p.Id == id);
+            var person = _context.People.FirstOrDefault(p => p.Id == peopleId);
  
             if (person == null)
             {
                 return NotFound();
             }
 
-            var vm = new EditPersonViewModel();
-            vm.Name = person.Name;
-            vm.Email = person.Email;
-            vm.Phone = person.Phone;
-            vm.Address = person.Address;
-            vm.LastNames = person.LastNames;
-            vm.Dni = person.Dni;
+            //var vm = new EditPersonViewModel();
+            //vm.Name = person.Name;
+            //vm.Email = person.Email;
+            //vm.Phone = person.Phone;
+            //vm.Address = person.Address;
+            //vm.LastNames = person.LastNames;
+            //vm.Dni = person.Dni;
 
-            return View(vm);
-        }
-
-        [HttpPost]
-        public IActionResult Delete(EditPersonViewModel vm)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(vm);
-            }
-
-            var personDb = _context.People.FirstOrDefault(p => p.Id == vm.Id);
-
-            if (personDb == null)
-            {
-                return NotFound();
-            }
-             
-            _context.People.Remove(personDb);
+            _context.People.Remove(person);
             _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            //return View(vm);
+            return RedirectToAction(nameof(Index)); 
         }
+
+        //[HttpPost]
+        //public IActionResult Delete(EditPersonViewModel vm)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(vm);
+        //    }
+
+        //    var personDb = _context.People.FirstOrDefault(p => p.Id == vm.Id);
+
+        //    if (personDb == null)
+        //    {
+        //        return NotFound();
+        //    }
+             
+        //    _context.People.Remove(personDb);
+        //    _context.SaveChanges();
+        //    return RedirectToAction(nameof(Index));
+        //}
     }
 }

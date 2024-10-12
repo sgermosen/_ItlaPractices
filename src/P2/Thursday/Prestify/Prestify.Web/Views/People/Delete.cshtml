@@ -4,8 +4,8 @@
 <h1> Editing a Person</h1>
 
 
- 
-    <form asp-action="Edit">
+
+<form asp-action="Delete">
     <input class="form-control" asp-for="Id" type="hidden" />
 
         <div class="row">
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-    <input type="submit" class="btn btn-primary" value="Save" />
+    <input type="submit" class="btn btn-danger" value="Save" />
     <a asp-action="Index" class="btn btn-secondary"> Cancel</a>
     </form>
 
