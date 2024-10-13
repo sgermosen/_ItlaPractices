@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExpressTaste.Web.Models.Entities
 {
-
+   // [Table("CUSTOMERS")]
     public class Customer
     {
         [Key]
@@ -11,11 +12,13 @@ namespace ExpressTaste.Web.Models.Entities
         [StringLength(50)] 
         public string Name { get; set; }
 
-        [StringLength(50)] 
+        [StringLength(50)]
+       // [Column("LAST_NAME")] 
         public string Lastname { get; set; }
 
         [StringLength(25)]
         [EmailAddress]
+       // [Column ("EMAIL")]
         public string Email { get; set; }
 
         [StringLength(15)]
@@ -23,6 +26,7 @@ namespace ExpressTaste.Web.Models.Entities
         public string Phone { get; set; }
 
         public bool IsActive { get; set; }
+
         public char Gender { get; set; }
 
         public List<Order> Orders { get; set; }

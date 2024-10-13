@@ -19,8 +19,7 @@ namespace ExpressTaste.Web.Controllers
             
             return View("ShoMeAnotherThing");
         }
-
-
+         
         public IActionResult Index()
         {
             return View();

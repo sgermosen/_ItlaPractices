@@ -6,11 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
   
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
-    p.UseSqlServer(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSql")));
-
 //builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
-//    p.UseSqlite(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSqLite")));
+//    p.UseSqlServer(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSql")));
+
+builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
+    p.UseSqlite(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSqLite")));
 
 var app = builder.Build();
 
