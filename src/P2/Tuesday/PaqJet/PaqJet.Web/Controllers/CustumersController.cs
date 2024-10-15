@@ -43,16 +43,14 @@ namespace PaqJet.Web.Controllers
         public IActionResult Create()
         {
             var customers = _context.Customers.ToList();
-            ViewBag.Customers = customers;
-            ViewBag.Header = "Esta es la cabecera del back";
+            //ViewBag.Customers = customers;
+            //ViewBag.Header = "Esta es la cabecera del back";
             var vm = new CreateCustomerViewModel();
+            vm.Header = "Esta es la cabecera del back";
             // vm.Customers = customers;
             return View(vm);
         }
-
-        // POST: Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateCustomerViewModel custumer)
@@ -98,7 +96,7 @@ namespace PaqJet.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, EditCustomerViewModel custumer)
+        public async Task<IActionResult> Edit(int id, EditCustomerRequest custumer)
         {
             if (id != custumer.Id)
             {

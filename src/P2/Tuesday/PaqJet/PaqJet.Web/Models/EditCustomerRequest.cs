@@ -1,6 +1,6 @@
 ﻿namespace PaqJet.Web.Models
 {
-    public class EditCustomerViewModel: CustomerViewModel
+    public class EditCustomerRequest : CustomerViewModel
     {
         public int Id { get; set; }
         //public string Name { get; set; }
