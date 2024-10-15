@@ -1,14 +1,9 @@
 ﻿{
     int typepOption = 1;
     int chosenContinue = 0;
-    string firstTypedNumber;
-    //decimal firstTypedNumberConverted;
-    //decimal secondTypedNumberConverted;
     decimal total = 0;
-    //Array
-    decimal[] typedNumbers = new decimal[2];
     List<decimal> typedNumbers2 = new List<decimal>();
-    bool wantToContinue = true;
+    List<decimal> typedNumbers1 = new List<decimal>();
 
     Console.WriteLine("Esto es una calculadora Básica");
 
@@ -19,88 +14,64 @@
     {
 
         typepOption = int.Parse(Console.ReadLine());
+         
+        CaptureValueFromUser(ref typedNumbers2);
 
-
-        Console.WriteLine("Digite el primer número");
-        firstTypedNumber = Console.ReadLine();
-        //typedNumbers[0] = Convert.ToDecimal(firstTypedNumber);
-        typedNumbers2.Add(Convert.ToDecimal(firstTypedNumber));
-        Console.WriteLine("Digite el segundo número");
-
-        //typedNumbers[1] = Convert.ToDecimal(Console.ReadLine());
-        typedNumbers2.Add(Convert.ToDecimal(Console.ReadLine()));
-
-        Console.WriteLine("Desea continuar agregando números: 1. Si, 2. No ?");
-
+        CaptureValueFromUser(ref typedNumbers2);
+         
+        Console.WriteLine("Desea continuar agregando números: 1. Si, 2. No ?"); 
         chosenContinue = Convert.ToInt32(Console.ReadLine());
 
         if (chosenContinue == 1 || chosenContinue == 2)
         {
             while (chosenContinue == 1)
             {
-                Console.WriteLine("Digite un nuevo número");
-                int newDimention = typedNumbers.Length + 1;
-                decimal[] oldTypedNumbers = typedNumbers;
-                typedNumbers = new decimal[newDimention];
+                CaptureValueFromUser(ref typedNumbers2);
 
-                for (int i = 0; i <= oldTypedNumbers.Length - 1; i++)
-                {
-                    typedNumbers[i] = oldTypedNumbers[i];
-                }
-                typedNumbers[newDimention - 1] = Convert.ToDecimal(Console.ReadLine());
-                typedNumbers2.Add(Convert.ToDecimal(Console.ReadLine()));
                 Console.WriteLine("Desea continuar agregando números: 1. Si, 2. No ?");
 
                 chosenContinue = Convert.ToInt32(Console.ReadLine());
-
             }
         }
         switch (typepOption)
         {
             case 1:
-                {
-                    for (int i = 0; i < typedNumbers.Length; i++)
-                    {
-                        total = total + typedNumbers[i];
-                        // total += typedNumbers[i];
-                    }
-                    for (int i = 0; i < typedNumbers2.Count; i++)
-                    {
-                        total = total + typedNumbers2[i];
-                        // total += typedNumbers[i];
-                    }
-                    foreach (var item in typedNumbers)
-                    {
-                        total = total + item;
-                    }
+                {  
                     foreach (var item in typedNumbers2)
                     {
-                        total = total + item;
-                    }
-
+                        SumByRef(ref total, item);
+                        total = Sum(total, item);
+                        total = MakeOperation(total, item, typepOption);
+                    } 
                 }
                 break;
             case 2:
                 {
-                    for (int i = 0; i < typedNumbers.Length; i++)
+                    for (int i = 0; i < typedNumbers2.Count; i++)
                     {
-                        total = total - typedNumbers[i];
+                        //total = total - typedNumbers2[i];
+                        total = MakeOperation(total, typedNumbers2[i], typepOption);
+
                     }
                 }
                 break;
             case 3:
                 {
-                    for (int i = 0; i < typedNumbers.Length; i++)
+                    for (int i = 0; i < typedNumbers2.Count; i++)
                     {
-                        total = total * typedNumbers[i];
+                      //  total = total * typedNumbers2[i];
+                        total = MakeOperation(total, typedNumbers2[i], typepOption);
+
                     }
                 }
                 break;
             case 4:
                 {
-                    for (int i = 0; i < typedNumbers.Length; i++)
+                    for (int i = 0; i < typedNumbers2.Count; i++)
                     {
-                        total = total / typedNumbers[i];
+                      //  total = total / typedNumbers2[i];
+                        total = MakeOperation(total, typedNumbers2[i], typepOption);
+
                     }
                 }
                 break;
@@ -114,13 +85,11 @@
 
     catch (FormatException ex)
     {
-        //throw;
         Console.WriteLine($"Error de formato: {ex.Message}");
 
     }
     catch (Exception ex)
     {
-        //throw;
         Console.WriteLine($"Error: {ex.Message}");
 
     }
@@ -128,4 +97,47 @@
     {
         Console.WriteLine("cerrando la conexion");
     }
+
+
+
+    static decimal MakeOperation(decimal originalValue, decimal newValue, int option)
+    {
+        switch (option)
+        {
+            case 1:
+                 return originalValue += newValue;  
+            case 2:
+                return originalValue -= newValue; 
+            case 3:
+                return originalValue *= newValue; 
+            case 4:
+                return originalValue /= newValue;  
+        }
+        return originalValue;
+    }
+
+    static void CaptureValueFromUser(ref List<decimal> value)
+    {
+        if (!value.Any())
+        {
+            Console.WriteLine("Digite un primer valor núumerico");
+        }
+        else
+        {
+            Console.WriteLine("Digite otro valor núumerico");
+        }
+        value.Add(Convert.ToDecimal(Console.ReadLine()));
+    }
+     
+    static decimal Sum(decimal originalValue, decimal addedValue)
+    { 
+        originalValue += addedValue;
+        return originalValue;
+    }
+
+    static void SumByRef(ref decimal originalValue, decimal addedValue)
+    { 
+        originalValue += addedValue;
+    }
 }
+
