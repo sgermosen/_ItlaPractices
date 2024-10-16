@@ -9,7 +9,7 @@
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -31,13 +31,13 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+              @item.Name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+               @item.LastName
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Age)
