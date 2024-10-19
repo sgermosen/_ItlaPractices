@@ -1,0 +1,6 @@
+@Prestify.API_HostAddress = http://localhost:5077
+
+GET {{Prestify.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

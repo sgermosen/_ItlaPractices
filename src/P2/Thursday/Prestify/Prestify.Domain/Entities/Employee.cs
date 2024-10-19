@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Prestify.Web.Models.Entities
+namespace Prestify.Domain.Entities
 {
     public class Employee
     {
@@ -14,6 +14,7 @@ namespace Prestify.Web.Models.Entities
         public string Position { get; set; }
         public int Id { get; set; }
         public List<Loan> Loans { get; set; }
+         
 
     }
 }

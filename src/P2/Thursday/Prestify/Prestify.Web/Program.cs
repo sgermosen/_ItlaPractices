@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using Prestify.Web.Data;
+using Prestify.Domain;
 var builder = WebApplication.CreateBuilder(args);
-
+ 
 //builder.Services.AddDbContext<PrestifyDbContext>(p =>
-//    p.UseSqlServer("builder.Configuration.GetConnectionString("PrestifyStrConnection")"));
+//    p.UseSqlite(builder.Configuration.GetConnectionString("PrestifysqLitestr")));
 
 builder.Services.AddDbContext<PrestifyDbContext>(p =>
-    p.UseSqlite(builder.Configuration.GetConnectionString("PrestifysqLitestr")));
+    p.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyStrConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();

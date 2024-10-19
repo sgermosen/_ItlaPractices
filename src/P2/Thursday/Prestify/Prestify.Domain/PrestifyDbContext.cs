@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Prestify.Web.Models.Entities;
+using Prestify.Domain.Entities;
 
-namespace Prestify.Web.Data
+
+namespace Prestify.Domain
 {
     public class PrestifyDbContext : DbContext
     {

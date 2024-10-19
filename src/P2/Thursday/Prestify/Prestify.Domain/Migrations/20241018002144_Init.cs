@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Prestify.Web.Migrations
+namespace Prestify.Domain.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration

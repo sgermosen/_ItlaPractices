@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Prestify.Web.Models.Entities
+namespace Prestify.Domain.Entities
 {
     public class Person
     {

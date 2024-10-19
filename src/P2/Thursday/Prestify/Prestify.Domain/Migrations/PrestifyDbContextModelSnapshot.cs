@@ -2,25 +2,22 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Prestify.Web.Data;
+using Prestify.Domain;
 
 #nullable disable
 
-namespace Prestify.Web.Migrations
+namespace Prestify.Domain.Migrations
 {
     [DbContext(typeof(PrestifyDbContext))]
-    [Migration("20241004005718_Init")]
-    partial class Init
+    partial class PrestifyDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Customer", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,7 +38,7 @@ namespace Prestify.Web.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Employee", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +54,7 @@ namespace Prestify.Web.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Loan", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Loan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -101,7 +98,7 @@ namespace Prestify.Web.Migrations
                     b.ToTable("Loans");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Person", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,26 +138,24 @@ namespace Prestify.Web.Migrations
                     b.ToTable("People");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Customer", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Customer", b =>
                 {
-                    b.HasOne("Prestify.Web.Models.Entities.Person", "Person")
+                    b.HasOne("Prestify.Domain.Entities.Person", null)
                         .WithMany("Customers")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Loan", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Loan", b =>
                 {
-                    b.HasOne("Prestify.Web.Models.Entities.Customer", "Customer")
+                    b.HasOne("Prestify.Domain.Entities.Customer", "Customer")
                         .WithMany("Loans")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Prestify.Web.Models.Entities.Employee", "Employee")
+                    b.HasOne("Prestify.Domain.Entities.Employee", "Employee")
                         .WithMany("Loans")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -171,17 +166,17 @@ namespace Prestify.Web.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Customer", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Customer", b =>
                 {
                     b.Navigation("Loans");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Employee", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Employee", b =>
                 {
                     b.Navigation("Loans");
                 });
 
-            modelBuilder.Entity("Prestify.Web.Models.Entities.Person", b =>
+            modelBuilder.Entity("Prestify.Domain.Entities.Person", b =>
                 {
                     b.Navigation("Customers");
                 });

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Prestify.Web.Data;
+using Prestify.Domain;
+using Prestify.Domain.Entities;
 using Prestify.Web.Models;
-using Prestify.Web.Models.Entities;
 using Prestify.Web.Models.ViewModels;
-using System;
 
 namespace Prestify.Web.Controllers
 {
@@ -40,7 +39,7 @@ namespace Prestify.Web.Controllers
         }
 
         [HttpPost]
-      //  public IActionResult Create(Person vm)
+        //  public IActionResult Create(Person vm)
         public IActionResult Create(CreatePersonViewModel vm)
         {
             //if (ModelState.IsValid)
@@ -60,11 +59,12 @@ namespace Prestify.Web.Controllers
                 return View(vm);
             }
 
+            //var personDb = new Prestify.Domain.Entities.Person();
             var personDb = new Person();
             personDb.Name = vm.Name;
             personDb.Email = vm.Email;
             personDb.Phone = vm.Phone;
-            personDb.Address   = vm.Address;
+            personDb.Address = vm.Address;
             personDb.LastNames = vm.LastNames;
             personDb.Dni = vm.Dni;
 
@@ -94,7 +94,7 @@ namespace Prestify.Web.Controllers
             //}
             if (person == null)
             {
-               return NotFound();
+                return NotFound();
             }
 
             var vm = new EditPersonViewModel();
@@ -124,7 +124,7 @@ namespace Prestify.Web.Controllers
 
             if (personDb == null)
             {
-               return  NotFound();
+                return NotFound();
             }
 
             personDb.Name = vm.Name;
@@ -133,17 +133,17 @@ namespace Prestify.Web.Controllers
             personDb.Address = vm.Address;
             personDb.LastNames = vm.LastNames;
             personDb.Dni = vm.Dni;
-             
+
             _context.People.Update(personDb);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpPost] 
+        [HttpPost]
         public IActionResult Delete(int peopleId)
         {
             var person = _context.People.FirstOrDefault(p => p.Id == peopleId);
- 
+
             if (person == null)
             {
                 return NotFound();
@@ -160,7 +160,7 @@ namespace Prestify.Web.Controllers
             _context.People.Remove(person);
             _context.SaveChanges();
             //return View(vm);
-            return RedirectToAction(nameof(Index)); 
+            return RedirectToAction(nameof(Index));
         }
 
         //[HttpPost]
@@ -177,7 +177,7 @@ namespace Prestify.Web.Controllers
         //    {
         //        return NotFound();
         //    }
-             
+
         //    _context.People.Remove(personDb);
         //    _context.SaveChanges();
         //    return RedirectToAction(nameof(Index));

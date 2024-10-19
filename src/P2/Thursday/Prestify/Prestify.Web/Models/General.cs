@@ -1,5 +1,4 @@
-﻿using Prestify.Web.Controllers;
-using Prestify.Web.Models.Entities;
+﻿using Prestify.Domain.Entities;
 
 namespace Prestify.Web.Models
 {
