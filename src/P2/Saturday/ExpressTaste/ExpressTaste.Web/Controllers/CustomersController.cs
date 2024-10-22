@@ -1,5 +1,5 @@
-﻿using ExpressTaste.Web.Data;
-using ExpressTaste.Web.Models.Entities;
+﻿using ExpressTaste.Domain;
+using ExpressTaste.Domain.Entities;
 using ExpressTaste.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +15,7 @@ namespace ExpressTaste.Web.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             var vm = new CustomersViewModel();
@@ -75,7 +76,7 @@ namespace ExpressTaste.Web.Controllers
         }
 
         public async Task<IActionResult> Edit(int id)
-        { 
+        {
 
             var customerDb = await _context.Customers.FindAsync(id);
             // var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);

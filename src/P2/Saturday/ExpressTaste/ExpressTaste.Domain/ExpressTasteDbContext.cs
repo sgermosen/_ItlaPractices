@@ -1,16 +1,16 @@
-﻿using ExpressTaste.Web.Models.Entities;
+﻿using ExpressTaste.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExpressTaste.Web.Data
+namespace ExpressTaste.Domain
 {
     public class ExpressTasteDbContext : DbContext
-    {
+    { 
         public ExpressTasteDbContext(DbContextOptions<ExpressTasteDbContext> options) : base(options)
         {
         }
 
-        public DbSet<Customer> Customers { get; set; }  
-        public DbSet<Order> Orders { get; set; }  
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

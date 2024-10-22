@@ -1,4 +1,4 @@
-﻿namespace ExpressTaste.Web.Models.Entities
+﻿namespace ExpressTaste.Domain.Entities
 {
     public class OrderDetail
     {

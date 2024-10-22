@@ -1,8 +1,8 @@
 ﻿using ExpressTaste.Domain.Entities;
 
-namespace ExpressTaste.Web.Models.ViewModels
+namespace ExpressTaste.API.Dtos
 {
-    public class CustomersViewModel
+    public class CustomersDto
     {
         public List<Customer> ActiveCustomers { get; set; }
         public List<Customer> AllCustomers { get; set; }

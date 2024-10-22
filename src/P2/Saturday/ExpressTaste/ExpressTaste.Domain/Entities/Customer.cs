@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ExpressTaste.Web.Models.Entities
+namespace ExpressTaste.Domain.Entities
 {
    // [Table("CUSTOMERS")]
     public class Customer

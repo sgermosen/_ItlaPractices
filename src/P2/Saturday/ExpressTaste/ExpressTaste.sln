@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.Web", "ExpressTaste.Web\ExpressTaste.Web.csproj", "{3329DD2D-713F-438A-8995-487D723C9031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressTaste.Web", "ExpressTaste.Web\ExpressTaste.Web.csproj", "{3329DD2D-713F-438A-8995-487D723C9031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.API", "ExpressTaste.API\ExpressTaste.API.csproj", "{42D1C695-AFC7-42FB-846E-7873B3239D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.Domain", "ExpressTaste.Domain\ExpressTaste.Domain.csproj", "{6A2A41FE-E294-4D5A-830C-5D23566E2F03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{3329DD2D-713F-438A-8995-487D723C9031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3329DD2D-713F-438A-8995-487D723C9031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3329DD2D-713F-438A-8995-487D723C9031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D1C695-AFC7-42FB-846E-7873B3239D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D1C695-AFC7-42FB-846E-7873B3239D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D1C695-AFC7-42FB-846E-7873B3239D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D1C695-AFC7-42FB-846E-7873B3239D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2A41FE-E294-4D5A-830C-5D23566E2F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2A41FE-E294-4D5A-830C-5D23566E2F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2A41FE-E294-4D5A-830C-5D23566E2F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2A41FE-E294-4D5A-830C-5D23566E2F03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
