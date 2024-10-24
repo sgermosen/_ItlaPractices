@@ -1,10 +1,8 @@
-﻿using PaqJet.Web.Models.Entities;
-
-namespace PaqJet.Web.Models
+﻿namespace PaqJet.Web.Models
 {
     public class CreateCustomerViewModel : CustomerViewModel
     {
-        public string Header { get;  set; }
+        public string Header { get; set; }
 
         //public string Name { get; set; }
         //public string LastName { get; set; }

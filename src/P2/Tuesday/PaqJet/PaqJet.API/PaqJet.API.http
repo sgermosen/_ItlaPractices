@@ -1,0 +1,6 @@
+@PaqJet.API_HostAddress = http://localhost:5131
+
+GET {{PaqJet.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

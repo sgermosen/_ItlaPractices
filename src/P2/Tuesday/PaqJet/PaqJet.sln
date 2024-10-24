@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaqJet.Web", "PaqJet.Web\PaqJet.Web.csproj", "{B769C931-F2C2-4326-B229-F52940904A3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaqJet.Web", "PaqJet.Web\PaqJet.Web.csproj", "{B769C931-F2C2-4326-B229-F52940904A3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaqJet.API", "PaqJet.API\PaqJet.API.csproj", "{6BA83A65-EDAD-4604-8F6F-6342C1AE5F25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaqJet.Domain", "PaqJet.Domain\PaqJet.Domain.csproj", "{54438821-FE39-494F-B78F-5E8DB26058CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B769C931-F2C2-4326-B229-F52940904A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B769C931-F2C2-4326-B229-F52940904A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B769C931-F2C2-4326-B229-F52940904A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BA83A65-EDAD-4604-8F6F-6342C1AE5F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BA83A65-EDAD-4604-8F6F-6342C1AE5F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BA83A65-EDAD-4604-8F6F-6342C1AE5F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BA83A65-EDAD-4604-8F6F-6342C1AE5F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54438821-FE39-494F-B78F-5E8DB26058CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54438821-FE39-494F-B78F-5E8DB26058CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54438821-FE39-494F-B78F-5E8DB26058CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54438821-FE39-494F-B78F-5E8DB26058CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

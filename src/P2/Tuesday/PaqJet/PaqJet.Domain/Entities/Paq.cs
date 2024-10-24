@@ -1,4 +1,4 @@
-﻿namespace PaqJet.Web.Models.Entities
+﻿namespace PaqJet.Domain.Entities
 {
     public class Paq
     {
@@ -9,11 +9,11 @@
         public decimal DeclaredValue { get; set; }
         public string Description { get; set; }
         public int StatusId { get; set; }
-        public Status Status { get; set; }
+         public Status Status { get; set; }
         public int CustumerId { get; set; }
-        public Customer Customer { get; set; }
+         public Customer Customer { get; set; }
         public int EmployeeId { get; set; }
-        public Employee Employee { get; set; }
+       public Employee Employee { get; set; }
 
     }
 }

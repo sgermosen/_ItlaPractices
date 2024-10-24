@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PaqJet.Web.Data;
+using PaqJet.Domain;
+using PaqJet.Domain.Entities;
 using PaqJet.Web.Models;
-using PaqJet.Web.Models.Entities;
 
 namespace PaqJet.Web.Controllers
 {
@@ -50,7 +50,7 @@ namespace PaqJet.Web.Controllers
             // vm.Customers = customers;
             return View(vm);
         }
-         
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateCustomerViewModel custumer)

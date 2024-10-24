@@ -1,4 +1,4 @@
-﻿namespace PaqJet.Web.Models.Entities
+﻿namespace PaqJet.Domain.Entities
 {
     public class Employee
     {
