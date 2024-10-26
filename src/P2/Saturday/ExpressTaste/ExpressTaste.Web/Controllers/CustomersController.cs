@@ -54,27 +54,27 @@ namespace ExpressTaste.Web.Controllers
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateCustomerViewModel vm)
-        {
-            if (ModelState.IsValid)
-            {
-                var dbCustomer = new Customer();
+       // [HttpPost]
+       //// [ValidateAntiForgeryToken]
+       // public async Task<IActionResult> Create(CreateCustomerViewModel vm)
+       // {
+       //     if (ModelState.IsValid)
+       //     {
+       //         var dbCustomer = new Customer();
 
-                dbCustomer.Name = vm.Name;
-                dbCustomer.Email = vm.Email;
-                dbCustomer.Phone = vm.Phone;
-                dbCustomer.Lastname = vm.Lastname;
-                dbCustomer.Gender = vm.Gender;
-                dbCustomer.IsActive = vm.IsActive;
+       //         dbCustomer.Name = vm.Name;
+       //         dbCustomer.Email = vm.Email;
+       //         dbCustomer.Phone = vm.Phone;
+       //         dbCustomer.Lastname = vm.Lastname;
+       //         dbCustomer.Gender = vm.Gender;
+       //         dbCustomer.IsActive = vm.IsActive;
 
-                _context.Customers.Add(dbCustomer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View();
-        }
+       //         _context.Customers.Add(dbCustomer);
+       //         await _context.SaveChangesAsync();
+       //         return RedirectToAction(nameof(Index));
+       //     }
+       //     return View();
+       // }
 
         public async Task<IActionResult> Edit(int id)
         {
@@ -97,60 +97,60 @@ namespace ExpressTaste.Web.Controllers
             return View(vm);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, EditCustomerViewModel vm)
-        {
-            //    if (identification != vm.Id)
-            //    {
-            //        return NotFound();
-            //    }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, EditCustomerViewModel vm)
+        //{
+        //    //    if (identification != vm.Id)
+        //    //    {
+        //    //        return NotFound();
+        //    //    }
 
 
-            if (ModelState.IsValid)
-            {
-                var dbCustomer = await _context.Customers.FindAsync(id);
+        //    if (ModelState.IsValid)
+        //    {
+        //        var dbCustomer = await _context.Customers.FindAsync(id);
 
-                dbCustomer.Name = vm.Name;
-                dbCustomer.Email = vm.Email;
-                dbCustomer.Phone = vm.Phone;
-                dbCustomer.Lastname = vm.Lastname;
-                dbCustomer.Gender = vm.Gender;
-                dbCustomer.IsActive = vm.IsActive;
-                _context.Customers.Update(dbCustomer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(vm);
-        }
+        //        dbCustomer.Name = vm.Name;
+        //        dbCustomer.Email = vm.Email;
+        //        dbCustomer.Phone = vm.Phone;
+        //        dbCustomer.Lastname = vm.Lastname;
+        //        dbCustomer.Gender = vm.Gender;
+        //        dbCustomer.IsActive = vm.IsActive;
+        //        _context.Customers.Update(dbCustomer);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(vm);
+        //}
 
-        // GET: Customers1/Delete/5
-        public async Task<IActionResult> Delete(int id)
-        {
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
+        ////// GET: Customers1/Delete/5
+        ////public async Task<IActionResult> Delete(int id)
+        ////{
+        ////    var customer = await _context.Customers
+        ////        .FirstOrDefaultAsync(m => m.Id == id);
+        ////    if (customer == null)
+        ////    {
+        ////        return NotFound();
+        ////    }
 
-            return View(customer);
-        }
+        ////    return View(customer);
+        ////}
 
 
-        [HttpPost, ActionName(nameof(Delete))]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirm(int id)
-        {
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer != null)
-            {
-                _context.Customers.Remove(customer);
-            }
+        //[HttpPost, ActionName(nameof(Delete))]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirm(int id)
+        //{
+        //    var customer = await _context.Customers.FindAsync(id);
+        //    if (customer != null)
+        //    {
+        //        _context.Customers.Remove(customer);
+        //    }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
     }
 }
