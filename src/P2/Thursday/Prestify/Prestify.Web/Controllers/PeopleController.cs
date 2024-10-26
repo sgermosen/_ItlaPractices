@@ -81,33 +81,35 @@ namespace Prestify.Web.Controllers
         // [HttpGet]
         public IActionResult Edit(int id)
         {
-            var person = _context.People.FirstOrDefault(p => p.Id == id);
+            //var person = _context.People.FirstOrDefault(p => p.Id == id);
 
-            //Person personDb;
-            //var people = _context.People.ToList();
-            //foreach (var item in people)
+            ////Person personDb;
+            ////var people = _context.People.ToList();
+            ////foreach (var item in people)
+            ////{
+            ////    if (item.Id == loqueseaId)
+            ////    { 
+            ////        personDb = item; 
+            ////        break;
+            ////    }
+            ////}
+            //if (person == null)
             //{
-            //    if (item.Id == loqueseaId)
-            //    { 
-            //        personDb = item; 
-            //        break;
-            //    }
+            //    return NotFound();
             //}
-            if (person == null)
-            {
-                return NotFound();
-            }
 
-            var vm = new EditPersonViewModel();
-            vm.Name = person.Name;
-            vm.Email = person.Email;
-            vm.Phone = person.Phone;
-            vm.Address = person.Address;
-            vm.LastNames = person.LastNames;
-            vm.Dni = person.Dni;
-            vm.Id = person.Id;
+            //var vm = new EditPersonViewModel();
+            //vm.Name = person.Name;
+            //vm.Email = person.Email;
+            //vm.Phone = person.Phone;
+            //vm.Address = person.Address;
+            //vm.LastNames = person.LastNames;
+            //vm.Dni = person.Dni;
+            //vm.Id = person.Id;
 
-            return View(vm);
+            //return View(vm);
+            return View();
+
         }
 
         //[HttpPost]
