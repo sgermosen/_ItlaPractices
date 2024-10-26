@@ -19,11 +19,23 @@ namespace Prestify.API.Controllers
         }
 
 
-        [HttpGet("GetPeople")]
+        [HttpGet(nameof(GetPeople))]
         public async Task<ActionResult<List<Person>>> GetPeople()
         {
             return await _context.People.ToListAsync();
         }
+
+        [HttpGet("GetPerson/{id}")]
+        public async Task<ActionResult<Person>> GetPerson(int id)
+        {
+            var person = await _context.People.FindAsync(id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return person;
+        }
+
 
         [HttpPost("AddPerson")]
         public async Task<ActionResult<NewPersonResponse>> AddPerson(NewPersonRequest request)
@@ -56,6 +68,43 @@ namespace Prestify.API.Controllers
             //  return personDb.Id;
         }
 
+        [HttpPut("UpdatePerson/{id}")]
+        public async Task<IActionResult> UpdatePerson(int id, NewPersonRequest request)
+        {
+            var personDb = await _context.People.FindAsync(id);
+            if (personDb == null)
+            {
+                return NotFound();
+            }
+
+            personDb.Name = request.Name;
+            personDb.Email = request.Email;
+            personDb.Phone = request.Phone;
+            personDb.Address = request.Address;
+            personDb.LastNames = request.LastNames;
+            personDb.Dni = request.Dni;
+
+            _context.People.Update(personDb);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+        [HttpDelete("DeletePerson/{id}")]
+        public async Task<IActionResult> DeletePerson(int id)
+        {
+            var personDb = await _context.People.FindAsync(id);
+            if (personDb == null)
+            {
+                return NotFound();
+            }
+
+            _context.People.Remove(personDb);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
     }
 }

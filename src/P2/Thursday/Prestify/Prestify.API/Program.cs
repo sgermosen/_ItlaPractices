@@ -5,15 +5,41 @@ using Prestify.Domain.Entities;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<PrestifyDbContext>(p =>
-    p.UseSqlite(builder.Configuration.GetConnectionString("PrestifysqLitestr")));
 //builder.Services.AddDbContext<PrestifyDbContext>(p =>
-//    p.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyStrConnection")));
+//    p.UseSqlite(builder.Configuration.GetConnectionString("PrestifysqLitestr")));
+builder.Services.AddDbContext<PrestifyDbContext>(p =>
+    p.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyStrConnection")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var MyAllowSpecificOrigins = "AllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:7218")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+            //.SetIsOriginAllowedToAllowWildcardSubdomains();
+        });
+});
+
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowSpecificOrigins",
+//        policy =>
+//        {
+//            policy.WithOrigins(appSettings.CorsSettings.AllowedOrigins)
+//                  .WithMethods(appSettings.CorsSettings.AllowedMethods)
+//                  .WithHeaders(appSettings.CorsSettings.AllowedHeaders);
+//        });
+//});
+
 
 var app = builder.Build();
 
@@ -29,6 +55,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
 

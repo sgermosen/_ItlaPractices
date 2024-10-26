@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba1", "MyChamba1\MyCh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba3", "MyChamba3\MyChamba3.csproj", "{E5559622-482A-4B04-94BC-BA2C1E39E1A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChamba4", "MyChamba4\MyChamba4.csproj", "{31FC9FD1-DC0D-48CF-95C5-B83B8E2AA58E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba4", "MyChamba4\MyChamba4.csproj", "{31FC9FD1-DC0D-48CF-95C5-B83B8E2AA58E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChamba5", "MyChamba5\MyChamba5.csproj", "{A632D076-CF62-49A1-9E83-7A6AB0275E1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba5", "MyChamba5\MyChamba5.csproj", "{A632D076-CF62-49A1-9E83-7A6AB0275E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChamba6", "MyChamba6\MyChamba6.csproj", "{49B796BF-72F6-445C-BEBC-5BA137DF2510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A632D076-CF62-49A1-9E83-7A6AB0275E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A632D076-CF62-49A1-9E83-7A6AB0275E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A632D076-CF62-49A1-9E83-7A6AB0275E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49B796BF-72F6-445C-BEBC-5BA137DF2510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49B796BF-72F6-445C-BEBC-5BA137DF2510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49B796BF-72F6-445C-BEBC-5BA137DF2510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49B796BF-72F6-445C-BEBC-5BA137DF2510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

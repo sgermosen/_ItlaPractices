@@ -1,63 +1,96 @@
-﻿@model CreatePersonViewModel;
+﻿@* @model CreatePersonViewModel; *@
 
 
 <h1> Add New Person</h1>
 
 
  
-    <form asp-action="Create">
+    <form >
         <div class="row">
             <div class="form-group ">
                 <div class="row">
                     <div class="col-md-2">
-                        <label asp-for="Name" class="form-label col-md-2"> Name</label>
+                        <label   class="form-label col-md-2"> Name</label>
                     </div>
                     <div class="col-md-2">
-                        <input class="form-control" asp-for="Name" />
+                        <input class="form-control" id="name" />
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="form-group ">
-            <label asp-for="LastNames" class="form-label col-md-2"> LastNames</label>
+            <label   class="form-label col-md-2"> LastNames</label>
             <div class="col-md-2">
-                <input class="form-control " asp-for="LastNames" />
+                <input class="form-control "  id="lastNames" />
             </div>
         </div>
          
         <div class="form-group ">
-            <label asp-for="Dni" class="form-label col-md-2"> Rnc</label>
+            <label  class="form-label col-md-2"> Rnc</label>
             <div class="col-md-2">
-                <input class="form-control " asp-for="Dni" />
+                <input class="form-control " id="dni" />
             </div>
         </div>
          
         <div class="form-group ">
-            <label asp-for="Address" class="form-label col-md-2"> Address</label>
+            <label  class="form-label col-md-2"> Address</label>
             <div class="col-md-2">
-                <textarea asp-for="Address" cols="3" class="form-control "> 
+                <textarea  id="address" cols="3" class="form-control "> 
                 </textarea> 
             </div>
         </div>
          
         <div class="form-group ">
-            <label asp-for="Phone" class="form-label col-md-2"> Phone</label>
+            <label   class="form-label col-md-2"> Phone</label>
             <div class="col-md-2">
-                <input class="form-control " asp-for="Phone" />
+                <input class="form-control " id="phone" />
             </div>
         </div> 
 
         <div class="form-group ">
-            <label asp-for="Email" class="form-label col-md-2"> Email</label>
+            <label  class="form-label col-md-2"> Email</label>
             <div class="col-md-2">
-                <input class="form-control " asp-for="Email" />
+                <input class="form-control " id="email"  />
             </div>
         </div>
-
-    <input type="submit" class="btn btn-primary" value="Save" />
-    <a asp-action="Index" class="btn btn-secondary"> Cancel</a>
+    <button id="addPersonButton" class="btn btn-primary">
+        Save
+</button> 
+    <a href="/Index" class="btn btn-secondary"> Cancel</a>
     </form>
+
+    @section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#addPersonButton').click(function (e) {
+                e.preventDefault();
+                var newPerson = {
+                    Name: $('#name').val(),
+                    LastNames: $('#lastNames').val(),
+                    Dni: $('#dni').val(),
+                    Address: $('#address').val(),
+                    Phone: $('#phone').val(),
+                    Email: $('#email').val()
+                };
+                $.ajax({
+                    url: 'https://localhost:7012/People/AddPerson',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(newPerson),
+                    success: function (data) {
+                        alert('Person added successfully with ID: ' + data.id);
+                        window.location.href = 'Index';
+                    },
+                    error: function (error) {
+                        console.log('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+
+    }
 
  
 

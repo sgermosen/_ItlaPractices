@@ -5,61 +5,74 @@
 
 
  
-    <form asp-action="Edit">
-    <input class="form-control" asp-for="Id" type="hidden" />
+<form id="editPersonForm">
+    <input   id="id" value="@Model.Id" />
+    <div class="form-group">
+        <label for="nameInput">Name</label>
+        <input class="form-control" id="nameInput" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label for="lastNamesInput">Last Names</label>
+        <input class="form-control" id="lastNamesInput" value="@Model.LastNames" />
+    </div>
+    <div class="form-group">
+        <label for="dniInput">Dni</label>
+        <input class="form-control" id="dniInput" value="@Model.Dni" />
+    </div>
+    <div class="form-group">
+        <label for="addressInput">Address</label>
+        <textarea class="form-control" id="addressInput">@Model.Address</textarea>
+    </div>
+    <div class="form-group">
+        <label for="phoneInput">Phone</label>
+        <input class="form-control" id="phoneInput" value="@Model.Phone" />
+    </div>
+    <div class="form-group">
+        <label for="emailInput">Email</label>
+        <input class="form-control" id="emailInput" value="@Model.Email" />
+    </div>
+    <button type="button" id="updatePersonButton" class="btn btn-primary">Save</button>
+    <a href="/People" class="btn btn-secondary">Cancel</a>
+</form>
 
-        <div class="row">
-            <div class="form-group ">
-                <div class="row">
-                    <div class="col-md-2">
-                        <label asp-for="Name" class="form-label col-md-2"> Name</label>
-                    </div>
-                    <div class="col-md-2">
-                        <input class="form-control" asp-for="Name" />
-                    </div>
-                </div>
-            </div>
-        </div>
+@section Scripts
+{
 
-        <div class="form-group ">
-            <label asp-for="LastNames" class="form-label col-md-2"> LastNames</label>
-            <div class="col-md-2">
-                <input class="form-control " asp-for="LastNames" />
-            </div>
-        </div>
-         
-        <div class="form-group ">
-            <label asp-for="Dni" class="form-label col-md-2"> Rnc</label>
-            <div class="col-md-2">
-                <input class="form-control " asp-for="Dni" />
-            </div>
-        </div>
-         
-        <div class="form-group ">
-            <label asp-for="Address" class="form-label col-md-2"> Address</label>
-            <div class="col-md-2">
-                <textarea asp-for="Address" cols="3" class="form-control "> 
-                </textarea> 
-            </div>
-        </div>
-         
-        <div class="form-group ">
-            <label asp-for="Phone" class="form-label col-md-2"> Phone</label>
-            <div class="col-md-2">
-                <input class="form-control " asp-for="Phone" />
-            </div>
-        </div> 
+    <script>
+        $(document).ready(function () {
+            $('#updatePersonButton').click(function (e) {
+                e.preventDefault();
+                //var personId = $('#id').val();
+                var url = window.location.pathname;
+                var personId = url.substring(url.lastIndexOf('/') + 1);
+                //const personId = url.split('/').pop();
+                var updatedPerson = {
+                    Name: $('#nameInput').val(),
+                    LastNames: $('#lastNamesInput').val(),
+                    Dni: $('#dniInput').val(),
+                    Address: $('#addressInput').val(),
+                    Phone: $('#phoneInput').val(),
+                    Email: $('#emailInput').val()
+                };
+                $.ajax({
+                    url: 'https://localhost:7012/People/UpdatePerson/' + personId,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(updatedPerson),
+                    success: function () {
+                        alert('Person updated successfully');
+                        window.location.href = '/People';
+                    },
+                    error: function (error) {
+                        console.log('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
 
-        <div class="form-group ">
-            <label asp-for="Email" class="form-label col-md-2"> Email</label>
-            <div class="col-md-2">
-                <input class="form-control " asp-for="Email" />
-            </div>
-        </div>
 
-    <input type="submit" class="btn btn-primary" value="Save" />
-    <a asp-action="Index" class="btn btn-secondary"> Cancel</a>
-    </form>
+}
 
  
 

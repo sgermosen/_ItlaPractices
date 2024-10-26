@@ -1,4 +1,4 @@
-﻿@model General;
+﻿@* @model General; *@
 
 @* @{
     var peopleFromViewBag = ViewBag.PeopleFromViewBag as List<Person>;
@@ -7,7 +7,8 @@
 @* <h2>
     @ViewBag.Header; 
 </h2> *@
-<a class="btn btn-primary" asp-action="Create">Add</a>
+<input id="testInput" type="text" />
+<a class="btn btn-primary" id="addPersonButton" >Add</a>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -17,7 +18,13 @@
         <th>Actions</th>
         </tr>
     </thead>
-    @if (Model.People == null || !Model.People.Any())
+    <tbody id="peopleTableBody">
+        <tr>
+            <td colspan="4">No Records found</td>
+        </tr>
+    </tbody>
+
+   @*  @if (Model.People == null || !Model.People.Any())
     {
         <tr>
             <td colspan="4">No Records found</td> 
@@ -27,7 +34,7 @@
     {
 
 
-        @*  foreach (var item in peopleFromViewBag)
+         foreach (var item in peopleFromViewBag)
         {
             <tr>
                 <td>@item.Id</td>
@@ -35,7 +42,7 @@
                 <td>@item.LastNames</td>
                 <td> </td>
             </tr>
-        } *@
+        }
 
         foreach (var item in Model.People)
         {
@@ -47,7 +54,7 @@
                     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id" > Edit</a>
                     <form asp-action="Delete">
                         <input asp-for="@item.Id" id="peopleId" name="peopleId" type="hidden" />
-                       @*  <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"> Delete</a> *@
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"> Delete</a>
                         <input class="btn btn-danger" type="submit" value="Delete"
                                onclick="return confirm('are you sure than you want to delete this?')" />
 
@@ -56,6 +63,76 @@
             </tr>
         }
         
-    }
+    } *@
 </table>
+
+@section Scripts 
+{ 
+    <script>
+ 
+        $(document).ready(function () { 
+            loadPeople();
+  
+            $('#addPersonButton').click(function () {
+                window.location.href = 'https://localhost:7218/People/Create';
+            });
+             
+            $(document).on('click', '.delete-person', function () {
+                var personId = $(this).data('id');
+                if (confirm('Are you sure you want to delete this person?')) {
+                    $.ajax({
+                        url: 'https://localhost:7012/People/DeletePerson/' + personId,
+                        type: 'DELETE',
+                        success: function () {
+                            alert('Person deleted successfully');
+                            loadPeople();
+                        },
+                        error: function (error) {
+                            console.log('Error:', error);
+                        }
+                    });
+                }
+            });
+
+            $(document).on('click', '.edit-person', function () {
+                var personId = $(this).data('id');
+                window.location.href = 'https://localhost:7218/People/Edit/' + personId;
+            });
+
+        });
+         
+        function loadPeople() {
+            $.ajax({
+                url: 'https://localhost:7012/People/GetPeople',
+                type: 'GET',
+                success: function (data) {
+                    var tableBody = '';
+                    if (data.length === 0) {
+                        tableBody = '<tr><td colspan="4">No Records found</td></tr>';
+                    } else {
+                        $.each(data, function (index, person) {
+                            tableBody += '<tr>' +
+                                '<td>' + person.id + '</td>' +
+                                '<td>' + person.name + '</td>' +
+                                '<td>' + person.lastNames + '</td>' +
+                                '<td>' +
+                                '<a class="btn btn-warning edit-person" data-id="' + person.id + '">Edit</a> ' +
+                                '<button class="btn btn-danger delete-person" data-id="' + person.id + '">Delete</button>' +
+                                '</td>' +
+                                '</tr>';
+                        });
+                    }
+                    $('#peopleTableBody').html(tableBody);
+                    console.log("mientras se ejecuta el loadpeople");
+
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        }
+         
+    </script>
+
+}
 

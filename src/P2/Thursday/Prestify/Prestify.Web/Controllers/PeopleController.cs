@@ -17,17 +17,18 @@ namespace Prestify.Web.Controllers
 
         public IActionResult Index()
         {
-            var query = _context.People.Where(p => !p.Deleted);
+            //   var query = _context.People.Where(p => !p.Deleted);
 
-            //query = query.Where(p => p.Name.Contains("Juan x"));
+            //   //query = query.Where(p => p.Name.Contains("Juan x"));
 
-            var people = query.ToList();
-            var general = new General();
+            //   var people = query.ToList();
+            //   var general = new General();
 
-            general.People = people;
-            ViewBag.Header = "This is a Header";
-            ViewBag.PeopleFromViewBag = people;
-            return View(general);
+            //   //general.People = people;
+            //   ViewBag.Header = "This is a Header";
+            ////   ViewBag.PeopleFromViewBag = people;
+            //   return View(general);
+            return View();
         }
         //Get
         // [HttpGet]
@@ -38,43 +39,43 @@ namespace Prestify.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        //  public IActionResult Create(Person vm)
-        public IActionResult Create(CreatePersonViewModel vm)
-        {
-            //if (ModelState.IsValid)
-            //{
-            //    _context.People.Add(vm);
-            //    _context.SaveChanges();
-            //    // return RedirectToAction("Index");
-            //    return RedirectToAction(nameof(Index));
-            //}
-            ////else
-            ////{
-            //return View(vm);
-            ////  }
+        //[HttpPost]
+        ////  public IActionResult Create(Person vm)
+        //public IActionResult Create(CreatePersonViewModel vm)
+        //{
+        //    //if (ModelState.IsValid)
+        //    //{
+        //    //    _context.People.Add(vm);
+        //    //    _context.SaveChanges();
+        //    //    // return RedirectToAction("Index");
+        //    //    return RedirectToAction(nameof(Index));
+        //    //}
+        //    ////else
+        //    ////{
+        //    //return View(vm);
+        //    ////  }
 
-            if (!ModelState.IsValid)
-            {
-                return View(vm);
-            }
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(vm);
+        //    }
 
-            //var personDb = new Prestify.Domain.Entities.Person();
-            var personDb = new Person();
-            personDb.Name = vm.Name;
-            personDb.Email = vm.Email;
-            personDb.Phone = vm.Phone;
-            personDb.Address = vm.Address;
-            personDb.LastNames = vm.LastNames;
-            personDb.Dni = vm.Dni;
+        //    //var personDb = new Prestify.Domain.Entities.Person();
+        //    var personDb = new Person();
+        //    personDb.Name = vm.Name;
+        //    personDb.Email = vm.Email;
+        //    personDb.Phone = vm.Phone;
+        //    personDb.Address = vm.Address;
+        //    personDb.LastNames = vm.LastNames;
+        //    personDb.Dni = vm.Dni;
 
-            //_context.People.Add(vm);
-            _context.People.Add(personDb);
-            // _context.Add(vm);
-            _context.SaveChanges();
-            // return RedirectToAction("Index");
-            return RedirectToAction(nameof(Index));
-        }
+        //    //_context.People.Add(vm);
+        //    _context.People.Add(personDb);
+        //    // _context.Add(vm);
+        //    _context.SaveChanges();
+        //    // return RedirectToAction("Index");
+        //    return RedirectToAction(nameof(Index));
+        //}
 
         //Get
         // [HttpGet]
@@ -104,64 +105,65 @@ namespace Prestify.Web.Controllers
             vm.Address = person.Address;
             vm.LastNames = person.LastNames;
             vm.Dni = person.Dni;
+            vm.Id = person.Id;
 
             return View(vm);
         }
 
-        [HttpPost]
-        public IActionResult Edit(int id, EditPersonViewModel vm)
-        {
-            if (vm.Id != id)
-            {
-                return BadRequest("Incorrect id");
-            }
-            if (!ModelState.IsValid)
-            {
-                return View(vm);
-            }
+        //[HttpPost]
+        //public IActionResult Edit(int id, EditPersonViewModel vm)
+        //{
+        //    if (vm.Id != id)
+        //    {
+        //        return BadRequest("Incorrect id");
+        //    }
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(vm);
+        //    }
 
-            var personDb = _context.People.FirstOrDefault(p => p.Id == id);
+        //    var personDb = _context.People.FirstOrDefault(p => p.Id == id);
 
-            if (personDb == null)
-            {
-                return NotFound();
-            }
+        //    if (personDb == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            personDb.Name = vm.Name;
-            personDb.Email = vm.Email;
-            personDb.Phone = vm.Phone;
-            personDb.Address = vm.Address;
-            personDb.LastNames = vm.LastNames;
-            personDb.Dni = vm.Dni;
+        //    personDb.Name = vm.Name;
+        //    personDb.Email = vm.Email;
+        //    personDb.Phone = vm.Phone;
+        //    personDb.Address = vm.Address;
+        //    personDb.LastNames = vm.LastNames;
+        //    personDb.Dni = vm.Dni;
 
-            _context.People.Update(personDb);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }
+        //    _context.People.Update(personDb);
+        //    _context.SaveChanges();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        [HttpPost]
-        public IActionResult Delete(int peopleId)
-        {
-            var person = _context.People.FirstOrDefault(p => p.Id == peopleId);
+        //[HttpPost]
+        //public IActionResult Delete(int peopleId)
+        //{
+        //    var person = _context.People.FirstOrDefault(p => p.Id == peopleId);
 
-            if (person == null)
-            {
-                return NotFound();
-            }
+        //    if (person == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            //var vm = new EditPersonViewModel();
-            //vm.Name = person.Name;
-            //vm.Email = person.Email;
-            //vm.Phone = person.Phone;
-            //vm.Address = person.Address;
-            //vm.LastNames = person.LastNames;
-            //vm.Dni = person.Dni;
+        //    //var vm = new EditPersonViewModel();
+        //    //vm.Name = person.Name;
+        //    //vm.Email = person.Email;
+        //    //vm.Phone = person.Phone;
+        //    //vm.Address = person.Address;
+        //    //vm.LastNames = person.LastNames;
+        //    //vm.Dni = person.Dni;
 
-            _context.People.Remove(person);
-            _context.SaveChanges();
-            //return View(vm);
-            return RedirectToAction(nameof(Index));
-        }
+        //    _context.People.Remove(person);
+        //    _context.SaveChanges();
+        //    //return View(vm);
+        //    return RedirectToAction(nameof(Index));
+        //}
 
         //[HttpPost]
         //public IActionResult Delete(EditPersonViewModel vm)
