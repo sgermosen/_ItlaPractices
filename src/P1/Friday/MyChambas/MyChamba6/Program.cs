@@ -2,22 +2,26 @@
 
 using MyChamba6;
 
-var contact = new Contact(1, "Juan", "Alberto", "email@email.com", "Calle", 52, true);
-var contact3 = new Contact();
-Contact contact2;
-contact2 = new Contact();
+//var contact = new Contact(1, "Juan", "Alberto", "email@email.com", "Calle", 52, true);
+//var contact3 = new Contact();
+//var contact4 = new Contact().CreateContactInstance(2, "Juan2", "Alberto2", "email@email.com", "Calle", 52, true);
 
-contact2.Id = 1;
-Console.WriteLine(contact2.Id);
-//contact2.email = "Test@test.com";
-contact2.Email = "Test@test.com";
+//Contact contact2;
+//contact2 = new Contact();
+
+//contact2.Id = 1;
+//Console.WriteLine(contact2.Id);
+////contact2.email = "Test@test.com";
+//contact2.Email = "Test@test.com";
 
 //contact.IsFavorite = true;
-contact.SetAsFavorite();
+//contact.SetAsFavorite();
 
-Console.WriteLine(contact.IsFavorite);
+//Console.WriteLine(contact.IsFavorite);
 
-var fullname = contact2.FullName();
+//var fullname = contact2.FullName();
+
+List<Contact> contacts = new List<Contact>();
 
 bool wantToContinue = true;
 int choosenOption = 0;
@@ -33,21 +37,17 @@ while (wantToContinue)
     {
         case 1:
             {
-                var count = ids.Count();
-                AddNewContact(ids, names, lastnames, emails, addresses, ages, favorites);
-                var count2 = ids.Count();
+                //var contact = ContactHelper.AddNewContact(contacts.Count);
+                //contacts.Add(contact);
+
+                ContactHelper.AddNewContact(contacts); 
             }
             break;
         case 2:
             {
                 Console.WriteLine("Type the id of the contact than you want to edit");
                 var id = Convert.ToInt32(Console.ReadLine());
-
-                string name = names[id];
-                Console.WriteLine($"Type the new name for {name}");
-                name = Console.ReadLine();
-                names.Remove(id);
-                names.Add(id, name);
+                ContactHelper.EditContact(contacts, id);
 
             }
             break;
@@ -55,12 +55,12 @@ while (wantToContinue)
             {
 
                 Console.WriteLine("---Name------------Lastname------------Email------------Address------------Age------------Is Favorite----");
-                foreach (var id in ids)
+                foreach (var item in contacts)
                 {
 
-                    var isFavoriteStr = favorites[id] ? "Yes" : "No";
+                    var isFavoriteStr = item.IsFavorite ? "Yes" : "No";
 
-                    Console.WriteLine($"---{names[id]}      {lastnames[id]}     {emails[id]}        {addresses[id]}     {ages[id]}      {isFavoriteStr}----");
+                    Console.WriteLine($"---{item.Name}      {item.LastName}     {item.Email}        {item.Address}     {item.Age}      {isFavoriteStr}----");
 
                 }
 
@@ -84,33 +84,3 @@ while (wantToContinue)
 Console.WriteLine("Closing the app");
 Console.ReadKey();
 
-static void AddNewContact(List<int> ids, Dictionary<int, string> names, Dictionary<int, string> lastnames, Dictionary<int, string> emails, Dictionary<int, string> addresses, Dictionary<int, int> ages, Dictionary<int, bool> favorites)
-{
-    var id = ids.Count + 1;
-    ids.Add(id);
-
-    Console.WriteLine("Type a name");
-    var name = Console.ReadLine();
-    names.Add(id, name);
-
-    Console.WriteLine("Type a lastname");
-    var lastname = Console.ReadLine();
-    lastnames.Add(id, lastname);
-
-    Console.WriteLine("Type an address");
-    var address = Console.ReadLine();
-    addresses.Add(id, address);
-
-    Console.WriteLine("Type a email");
-    var email = Console.ReadLine();
-    emails.Add(id, email);
-
-    Console.WriteLine("Type an age");
-    var age = Convert.ToInt32(Console.ReadLine());
-    ages.Add(id, age);
-
-    Console.WriteLine("Is favorite Contact? 1. Yes, 2. No");
-
-    bool isFavorite = Convert.ToInt32(Console.ReadLine()) == 1 ? true : false;
-    favorites.Add(id, isFavorite);
-}
