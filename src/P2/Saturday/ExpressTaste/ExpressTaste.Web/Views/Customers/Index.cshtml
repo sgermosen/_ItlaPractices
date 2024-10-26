@@ -1,7 +1,7 @@
 ﻿@* @using ExpressTaste.Web.Models.Entities *@
 @* @model List<ExpressTaste.Web.Models.Entities.Customer> *@
 @* @model List<Customer> *@
-@model ExpressTaste.Web.Models.ViewModels.CustomersViewModel
+@* @model ExpressTaste.Web.Models.ViewModels.CustomersViewModel *@
 
 @{
     ViewData["Title"] = "Customer List";
@@ -10,7 +10,9 @@
     Layout = "_Layout";
 }
 <p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
+    <a class="btn btn-primary" id="addCustomerButton"
+    @* asp-action="Create" *@
+    >Create New</a>
 </p>
 <div class="text-center">
     <table class="table table-bordered">
@@ -21,13 +23,17 @@
                 <th> Last Name</th>
                 <th> Actions</th>
             </tr>
-        </thead>
-
-
+        </thead> 
         <tr>
             <td colspan="4"> All Customers</td>
         </tr>
-        @foreach (var item in Model.AllCustomers)
+        <tbody id="customerTableBody">
+            <tr>
+                <td colspan="4">No Records found</td>
+            </tr>
+        </tbody>
+        @*   <tbody  >
+       @foreach (var item in Model.AllCustomers)
         {
             <tr>
                 <td> @item.Id</td>
@@ -40,10 +46,11 @@
                 </td>
             </tr>
         }
-        <tr>
+            </tbody>*@
+       @*  <tr>
             <td colspan="4"> Active Customers</td>
-        </tr>
-        @if (Model.ActiveCustomers != null && Model.ActiveCustomers.Any())  //&& Model.ActiveCustomers.Count() > 0)
+        </tr> *@
+     @*    @if (Model.ActiveCustomers != null && Model.ActiveCustomers.Any())  //&& Model.ActiveCustomers.Count() > 0)
         { 
             @foreach (var item in Model.ActiveCustomers)
             {
@@ -64,7 +71,76 @@
             <tr>
                 <td colspan="4"> No Records Found</td>
             </tr>
-        }
+        } *@
     </table>
 </div>
 
+@section Scripts 
+{ 
+<script>
+
+    $(document).ready(function () {
+
+        loadPeople();
+
+        $('#addCustomerButton').click(function () {
+                window.location.href = 'https://localhost:7167/Customers/Create';
+        });
+
+        $(document).on('click', '.delete-person', function () {
+            var personId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this person?')) {
+                $.ajax({
+                        url: 'https://localhost:7208/Customer/DeleteCustomer/' + personId,
+                    type: 'DELETE',
+                    success: function () {
+                        alert('Person deleted successfully');
+                        loadPeople();
+                    },
+                    error: function (error) {
+                        console.log('Error:', error);
+                    }
+                });
+            }
+        });
+
+        $(document).on('click', '.edit-person', function () {
+            var personId = $(this).data('id');
+                window.location.href = 'https://localhost:7167/Customers/Edit/' + personId;
+        });
+
+    });
+
+    function loadPeople() {
+        $.ajax({
+                url: 'https://localhost:7208/Customer/GetCustomers',
+            type: 'GET',
+            success: function (data) {
+                var tableBody = '';
+                if (data.length === 0) {
+                    tableBody = '<tr><td colspan="4">No Records found</td></tr>';
+                } else {
+                    $.each(data, function (index, person) {
+                        tableBody += '<tr>' +
+                            '<td>' + person.id + '</td>' +
+                            '<td>' + person.name + '</td>' +
+                                '<td>' + person.lastname + '</td>' +
+                            '<td>' +
+                            '<a class="btn btn-warning edit-person" data-id="' + person.id + '">Edit</a> ' +
+                            '<button class="btn btn-danger delete-person" data-id="' + person.id + '">Delete</button>' +
+                            '</td>' +
+                            '</tr>';
+                    });
+                }
+                    $('#customerTableBody').html(tableBody);
+                console.log("mientras se ejecuta el loadpeople");
+
+            },
+            error: function (error) {
+                console.log('Error:', error);
+            }
+        });
+    }
+
+</script>
+}

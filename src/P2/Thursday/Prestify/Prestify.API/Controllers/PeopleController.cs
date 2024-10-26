@@ -28,12 +28,12 @@ namespace Prestify.API.Controllers
         [HttpGet("GetPerson/{id}")]
         public async Task<ActionResult<Person>> GetPerson(int id)
         {
-            var person = await _context.People.FindAsync(id);
-            if (person == null)
+            var personDb = await _context.People.FindAsync(id);
+            if (personDb == null)
             {
                 return NotFound();
             }
-            return person;
+            return personDb;
         }
 
 

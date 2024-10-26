@@ -18,15 +18,16 @@ namespace ExpressTaste.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var vm = new CustomersViewModel();
-            var allCustomers = _context.Customers.ToList();
-            var activeCustomers = _context.Customers
-                .Where(c => c.IsActive && !c.IsActive).ToList();
-            // ViewBag.CustomerInformation = info2;
+            //var vm = new CustomersViewModel();
+            //var allCustomers = _context.Customers.ToList();
+            //var activeCustomers = _context.Customers
+            //    .Where(c => c.IsActive && !c.IsActive).ToList();
+            //// ViewBag.CustomerInformation = info2;
 
-            //vm.ActiveCustomers = activeCustomers;
-            vm.AllCustomers = allCustomers;
-            return View(vm);
+            ////vm.ActiveCustomers = activeCustomers;
+            //vm.AllCustomers = allCustomers;
+            //return View(vm);
+            return View();
         }
 
 

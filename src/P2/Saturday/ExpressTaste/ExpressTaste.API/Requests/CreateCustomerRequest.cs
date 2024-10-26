@@ -1,7 +1,7 @@
 ﻿namespace ExpressTaste.API.Dtos
 {
     public class CreateCustomerRequest
-    { 
+    {  
         public string Name { get; set; }
 
         public string Lastname { get; set; }

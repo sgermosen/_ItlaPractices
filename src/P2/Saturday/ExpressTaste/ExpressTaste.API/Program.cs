@@ -8,6 +8,19 @@ builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
 
 //builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
 //    p.UseSqlite(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSqLite")));
+ 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowSpecificOrigins",
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:7167")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+            //.SetIsOriginAllowedToAllowWildcardSubdomains();
+        });
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -25,6 +38,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowSpecificOrigins");
 
 app.MapControllers();
 

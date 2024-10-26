@@ -6,7 +6,7 @@
 
  
 <form id="editPersonForm">
-    <input   id="id" value="@Model.Id" />
+    <input type="hidden"   id="id" value="@Model.Id" />
     <div class="form-group">
         <label for="nameInput">Name</label>
         <input class="form-control" id="nameInput" value="@Model.Name" />
@@ -42,9 +42,9 @@
         $(document).ready(function () {
             $('#updatePersonButton').click(function (e) {
                 e.preventDefault();
-                //var personId = $('#id').val();
-                var url = window.location.pathname;
-                var personId = url.substring(url.lastIndexOf('/') + 1);
+                 var personId = $('#id').val();
+                // var url = window.location.pathname;
+                // var personId = url.substring(url.lastIndexOf('/') + 1);
                 //const personId = url.split('/').pop();
                 var updatedPerson = {
                     Name: $('#nameInput').val(),
