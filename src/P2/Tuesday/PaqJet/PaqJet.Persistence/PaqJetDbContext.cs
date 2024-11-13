@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PaqJet.Domain.Entities;
 
-namespace PaqJet.Domain
+namespace PaqJet.Persistence
 {
     public class PaqJetDbContext : DbContext
     {

@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba4", "MyChamba4\MyCh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba5", "MyChamba5\MyChamba5.csproj", "{080D40EB-2464-4E72-9FB1-93D48768836F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChamba6", "MyChamba6\MyChamba6.csproj", "{88F6293C-2244-40E8-B00A-1DE57A69CA6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChamba6", "MyChamba6\MyChamba6.csproj", "{88F6293C-2244-40E8-B00A-1DE57A69CA6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChamba7", "MyChamba7\MyChamba7.csproj", "{BF73A873-93E3-432F-AEE0-D4AC297973CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{88F6293C-2244-40E8-B00A-1DE57A69CA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88F6293C-2244-40E8-B00A-1DE57A69CA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88F6293C-2244-40E8-B00A-1DE57A69CA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF73A873-93E3-432F-AEE0-D4AC297973CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF73A873-93E3-432F-AEE0-D4AC297973CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF73A873-93E3-432F-AEE0-D4AC297973CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF73A873-93E3-432F-AEE0-D4AC297973CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

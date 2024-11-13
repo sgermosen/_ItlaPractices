@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace PaqJet.Domain.Migrations
+namespace PaqJet.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration

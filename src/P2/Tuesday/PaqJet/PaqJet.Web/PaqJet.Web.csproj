@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PaqJet.Domain\PaqJet.Domain.csproj" />
+    <ProjectReference Include="..\PaqJet.Persistence\PaqJet.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

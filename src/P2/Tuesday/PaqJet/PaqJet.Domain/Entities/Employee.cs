@@ -1,10 +1,11 @@
-﻿namespace PaqJet.Domain.Entities
+﻿using PaqJet.Domain.Core;
+
+namespace PaqJet.Domain.Entities
 {
-    public class Employee
-    {
-        public int Id { get; set; }
+    public class Employee: BaseEntity
+    { 
         public string Name { get; set; }
-        public int LastName { get; set; }
-        public int Salary { get; set; }
+        public string LastName { get; set; }
+        public decimal Salary { get; set; }
     }
 }

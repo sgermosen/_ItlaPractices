@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PaqJet.Domain.Core;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PaqJet.Domain.Entities
 {
-    public class Customer
+    public class Customer: BaseEntity
     {
-        public int Id { get; set; }
         [StringLength(100)]
         public string Name { get; set; }
         [StringLength(100)]

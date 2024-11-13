@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PaqJet.Domain;
+using PaqJet.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PaqJetDbContext>(options =>

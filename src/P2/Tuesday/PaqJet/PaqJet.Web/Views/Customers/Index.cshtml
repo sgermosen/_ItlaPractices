@@ -1,59 +1,89 @@
-﻿@model IEnumerable<PaqJet.Domain.Entities.Customer>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
-</p>
+﻿ 
+<h1> Customer</h1>
+ 
+ 
+<a class="btn btn-primary" id="addPersonButton">Crear Cliente</a>
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th></th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-              @item.Name
-            </td>
-            <td>
-               @item.LastName
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+    <tbody id="peopleTableBody">
+        <tr>  <td colspan="4">No Records found</td>  </tr>
     </tbody>
+     
 </table>
+
+@section Scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            loadPeople();
+
+            $('#addPersonButton').click(function () {
+                window.location.href = 'https://localhost:7226/Customers/Create';
+            });
+
+            $(document).on('click', '.delete-person', function () {
+                var personId = $(this).data('id');
+                if (confirm('Are you sure you want to delete this person?')) {
+                    $.ajax({
+                        url: 'https://localhost:7084/Customers/DeleteCustomer/' + personId,
+                        type: 'DELETE',
+                        success: function () {
+                            alert('Person deleted successfully');
+                            loadPeople();
+                        },
+                        error: function (error) {
+                            console.log('Error:', error);
+                        }
+                    });
+                }
+            });
+
+            $(document).on('click', '.edit-person', function () {
+                var personId = $(this).data('id');
+                window.location.href = 'https://localhost:7226/Customers/Edit/' + personId;
+            });
+
+        });
+
+        function loadPeople() {
+            $.ajax({
+                url: 'https://localhost:7084/Customers/GetAllCustomers',
+                type: 'GET',
+                success: function (data) {
+                    var tableBody = '';
+                    if (data.length === 0) {
+                        tableBody = '<tr><td colspan="4">No hay registros</td></tr>';
+                    } else {
+                        $.each(data, function (index, person) {
+                            tableBody += '<tr>' +
+                                '<td>' + person.id + '</td>' +
+                                '<td>' + person.name + '</td>' +
+                                '<td>' + person.lastName + '</td>' +
+                                '<td>' +
+                                '<a class="btn btn-warning edit-person" data-id="' + person.id + '">Editar</a> ' +
+                                '<button class="btn btn-danger delete-person" data-id="' + person.id + '">Delete</button>' +
+                                '</td>' +
+                                '</tr>';
+                        });
+                    }
+                    $('#peopleTableBody').html(tableBody);
+
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        }
+
+    </script>
+
+}
+

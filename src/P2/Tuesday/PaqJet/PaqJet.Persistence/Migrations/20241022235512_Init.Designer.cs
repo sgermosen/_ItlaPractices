@@ -3,17 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PaqJet.Domain;
+using PaqJet.Persistence;
+using PaqJet.Persistence;
 
 #nullable disable
 
-namespace PaqJet.Domain.Migrations
+namespace PaqJet.Persistence.Migrations
 {
     [DbContext(typeof(PaqJetDbContext))]
-    partial class PaqJetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241022235512_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +26,7 @@ namespace PaqJet.Domain.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PaqJet.Domain.Entities.Customer", b =>
+            modelBuilder.Entity("PaqJet.Persistence.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +59,7 @@ namespace PaqJet.Domain.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("PaqJet.Domain.Entities.Employee", b =>
+            modelBuilder.Entity("PaqJet.Persistence.Entities.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,7 +82,7 @@ namespace PaqJet.Domain.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("PaqJet.Domain.Entities.Paq", b =>
+            modelBuilder.Entity("PaqJet.Persistence.Entities.Paq", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -122,7 +126,7 @@ namespace PaqJet.Domain.Migrations
                     b.ToTable("Paqs");
                 });
 
-            modelBuilder.Entity("PaqJet.Domain.Entities.Status", b =>
+            modelBuilder.Entity("PaqJet.Persistence.Entities.Status", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -139,14 +143,14 @@ namespace PaqJet.Domain.Migrations
                     b.ToTable("Status");
                 });
 
-            modelBuilder.Entity("PaqJet.Domain.Entities.Paq", b =>
+            modelBuilder.Entity("PaqJet.Persistence.Entities.Paq", b =>
                 {
-                    b.HasOne("PaqJet.Domain.Entities.Customer", null)
+                    b.HasOne("PaqJet.Persistence.Entities.Customer", null)
                         .WithMany("Paqs")
                         .HasForeignKey("CustomerId");
                 });
 
-            modelBuilder.Entity("PaqJet.Domain.Entities.Customer", b =>
+            modelBuilder.Entity("PaqJet.Persistence.Entities.Customer", b =>
                 {
                     b.Navigation("Paqs");
                 });

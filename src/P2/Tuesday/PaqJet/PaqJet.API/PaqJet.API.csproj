@@ -11,7 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PaqJet.Application\PaqJet.Application.csproj" />
     <ProjectReference Include="..\PaqJet.Domain\PaqJet.Domain.csproj" />
+    <ProjectReference Include="..\PaqJet.Infrastructure\PaqJet.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

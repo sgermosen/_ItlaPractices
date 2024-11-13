@@ -28,6 +28,14 @@
             //}
             //contact = contacts.Where(c => c.Id == id).FirstOrDefault();
             contact = contacts.FirstOrDefault(c => c.Id == id);
+            string isFavoriteText= string.Empty;
+
+            if (!contact.IsFavorite ) {
+                isFavoriteText = "no";
+            }
+            else
+                isFavoriteText = "yes";
+             
 
             Console.WriteLine($"++{contact.Name} \t\t {contact.LastName} \t\t {contact.Address} \t\t {contact.Email} \t\t {contact.Age} \t\t++");
         }
