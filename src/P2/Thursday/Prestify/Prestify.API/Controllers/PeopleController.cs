@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Prestify.API.Requests;
-using Prestify.API.Responses;
-using Prestify.Domain;
-using Prestify.Domain.Entities;
+using Prestify.Common.Dtos;
+using Prestify.Common.Requests;
+using Prestify.Common.Responses;
+using Prestify.Infrastructure.Exceptions;
 
 namespace Prestify.API.Controllers
 {
@@ -11,81 +10,75 @@ namespace Prestify.API.Controllers
     [Route("[controller]")]
     public class PeopleController : ControllerBase
     {
-        private readonly PrestifyDbContext _context;
+        private readonly IPersonRepository _repo;
 
-        public PeopleController(PrestifyDbContext context)
+        public PeopleController(IPersonRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
 
         [HttpGet(nameof(GetPeople))]
-        public async Task<ActionResult<List<Person>>> GetPeople()
+        public async Task<ActionResult<List<PersonDto>>> GetPeople()
         {
-            return await _context.People.ToListAsync();
+            var people = await _repo.GetPeople();
+            if (!people.Any())
+                return BadRequest("No data faound");
+            return people;
         }
 
         [HttpGet("GetPerson/{id}")]
-        public async Task<ActionResult<Person>> GetPerson(int id)
+        public async Task<ActionResult<PersonDto>> GetPerson(int id)
         {
-            var personDb = await _context.People.FindAsync(id);
-            if (personDb == null)
+            if (id == 0)
+                return BadRequest("You need to give me an Valid Id");
+
+            var personDto = await _repo.GetPerson(id);
+            if (personDto == null)
             {
                 return NotFound();
             }
-            return personDb;
+
+            return personDto;
         }
 
 
         [HttpPost("AddPerson")]
         public async Task<ActionResult<NewPersonResponse>> AddPerson(NewPersonRequest request)
         {
-            var personDb = new Person();
 
-            personDb.Name = request.Name;
-            personDb.Email = request.Email;
-            personDb.Phone = request.Phone;
-            personDb.Address = request.Address;
-            personDb.LastNames = request.LastNames;
-            personDb.Dni = request.Dni;
-            //var customer = new Customer();
-            //customer.Job = "Something";
-            //var customer2 = new Customer();
-            //customer2.Job = "Something";
-            //var customer3 = new Customer();
-            //customer3.Job = "Something";
-            //var customer4 = new Customer();
-            //customer4.Job = "Something";
-            //personDb.Customers = new List<Customer> { customer, customer2, customer3, customer4 };
+            if (string.IsNullOrEmpty(request.Name))
+                return BadRequest("You need to set a name");
+            if (string.IsNullOrEmpty(request.Dni))
+                return BadRequest("You need to set a dni");
+            if (string.IsNullOrEmpty(request.LastNames))
+                return BadRequest("You need to set a last names");
+            if (string.IsNullOrEmpty(request.Email))
+                return BadRequest("You need to set a email");
+            if (!request.Email.Contains("@"))
+                return BadRequest("you need to provide a valid email");
 
-            _context.People.Add(personDb);
-            await _context.SaveChangesAsync();
-
-            return new NewPersonResponse { Id = personDb.Id };
-            //var response = new NewPersonResponse{Id = personDb.Id};
-
-            //return response;
-            //  return personDb.Id;
+            return await _repo.AddPerson(request);
         }
 
         [HttpPut("UpdatePerson/{id}")]
         public async Task<IActionResult> UpdatePerson(int id, NewPersonRequest request)
         {
-            var personDb = await _context.People.FindAsync(id);
-            if (personDb == null)
-            {
-                return NotFound();
-            }
+            //var personDb = await _repo.People.FindAsync(id);
+            //if (personDb == null)
+            //{
+            //    return NotFound();
+            //}
 
-            personDb.Name = request.Name;
-            personDb.Email = request.Email;
-            personDb.Phone = request.Phone;
-            personDb.Address = request.Address;
-            personDb.LastNames = request.LastNames;
-            personDb.Dni = request.Dni;
+            //personDb.Name = request.Name;
+            //personDb.Email = request.Email;
+            //personDb.Phone = request.Phone;
+            //personDb.Address = request.Address;
+            //personDb.LastNames = request.LastNames;
+            //personDb.Dni = request.Dni;
 
-            _context.People.Update(personDb);
-            await _context.SaveChangesAsync();
+            //_repo.People.Update(personDb);
+            //await _repo.SaveChangesAsync();
 
             return NoContent();
         }
@@ -94,14 +87,14 @@ namespace Prestify.API.Controllers
         [HttpDelete("DeletePerson/{id}")]
         public async Task<IActionResult> DeletePerson(int id)
         {
-            var personDb = await _context.People.FindAsync(id);
-            if (personDb == null)
-            {
-                return NotFound();
-            }
+            //var personDb = await _repo.People.FindAsync(id);
+            //if (personDb == null)
+            //{
+            //    return NotFound();
+            //}
 
-            _context.People.Remove(personDb);
-            await _context.SaveChangesAsync();
+            //_repo.People.Remove(personDb);
+            //await _repo.SaveChangesAsync();
 
             return NoContent();
         }

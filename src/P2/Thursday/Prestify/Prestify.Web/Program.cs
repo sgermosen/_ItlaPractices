@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddDbContext<PrestifyDbContext>(p =>
 //    p.UseSqlite(builder.Configuration.GetConnectionString("PrestifysqLitestr")));
 
-builder.Services.AddDbContext<PrestifyDbContext>(p =>
-    p.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyStrConnection")));
+//builder.Services.AddDbContext<PrestifyDbContext>(p =>
+//    p.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyStrConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();

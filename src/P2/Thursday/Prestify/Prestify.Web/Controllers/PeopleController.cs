@@ -7,14 +7,7 @@ using Prestify.Web.Models.ViewModels;
 namespace Prestify.Web.Controllers
 {
     public class PeopleController : Controller
-    {
-        private readonly PrestifyDbContext _context;
-
-        public PeopleController(PrestifyDbContext context)
-        {
-            this._context = context;
-        }
-
+    { 
         public IActionResult Index()
         {
             //   var query = _context.People.Where(p => !p.Deleted);

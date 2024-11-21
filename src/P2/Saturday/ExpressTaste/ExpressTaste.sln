@@ -5,9 +5,17 @@ VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressTaste.Web", "ExpressTaste.Web\ExpressTaste.Web.csproj", "{3329DD2D-713F-438A-8995-487D723C9031}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.API", "ExpressTaste.API\ExpressTaste.API.csproj", "{42D1C695-AFC7-42FB-846E-7873B3239D31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressTaste.API", "ExpressTaste.API\ExpressTaste.API.csproj", "{42D1C695-AFC7-42FB-846E-7873B3239D31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.Domain", "ExpressTaste.Domain\ExpressTaste.Domain.csproj", "{6A2A41FE-E294-4D5A-830C-5D23566E2F03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressTaste.Domain", "ExpressTaste.Domain\ExpressTaste.Domain.csproj", "{6A2A41FE-E294-4D5A-830C-5D23566E2F03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.Infraestructure", "ExpressTaste.Infraestructure\ExpressTaste.Infraestructure.csproj", "{E90301AD-7DB7-4360-97C0-A6970C0F2756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.Application", "ExpressTaste.Application\ExpressTaste.Application.csproj", "{26B39591-0428-4562-9A9E-F0AD72A09762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.Persistence", "ExpressTaste.Persistence\ExpressTaste.Persistence.csproj", "{406EF885-A964-41CB-BA4B-58AAB28E12D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressTaste.Common", "ExpressTaste.Common\ExpressTaste.Common.csproj", "{34B05C27-A1E4-4213-998A-9D3FB7FE7762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,22 @@ Global
 		{6A2A41FE-E294-4D5A-830C-5D23566E2F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A2A41FE-E294-4D5A-830C-5D23566E2F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A2A41FE-E294-4D5A-830C-5D23566E2F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90301AD-7DB7-4360-97C0-A6970C0F2756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90301AD-7DB7-4360-97C0-A6970C0F2756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90301AD-7DB7-4360-97C0-A6970C0F2756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90301AD-7DB7-4360-97C0-A6970C0F2756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26B39591-0428-4562-9A9E-F0AD72A09762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26B39591-0428-4562-9A9E-F0AD72A09762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26B39591-0428-4562-9A9E-F0AD72A09762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26B39591-0428-4562-9A9E-F0AD72A09762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{406EF885-A964-41CB-BA4B-58AAB28E12D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{406EF885-A964-41CB-BA4B-58AAB28E12D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{406EF885-A964-41CB-BA4B-58AAB28E12D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{406EF885-A964-41CB-BA4B-58AAB28E12D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B05C27-A1E4-4213-998A-9D3FB7FE7762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B05C27-A1E4-4213-998A-9D3FB7FE7762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B05C27-A1E4-4213-998A-9D3FB7FE7762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B05C27-A1E4-4213-998A-9D3FB7FE7762}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

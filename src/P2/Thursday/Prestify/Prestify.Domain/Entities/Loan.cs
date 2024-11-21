@@ -18,5 +18,6 @@ namespace Prestify.Domain.Entities
         public Customer Customer { get; set; }
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
+        public Category Category { get; set; }
     }
 }

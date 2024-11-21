@@ -1,12 +1,9 @@
-using ExpressTaste.Domain;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
-    p.UseSqlServer(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSql")));
+//builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
+//    p.UseSqlServer(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSql")));
 
 //builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
 //    p.UseSqlite(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSqLite")));

@@ -13,9 +13,8 @@ namespace PaqJet.API.Controllers
     {
         private readonly ICustomerService _customerService;
 
-        public CustomersController( ICustomerService customerService)
+        public CustomersController(ICustomerService customerService)
         {
-            _repository = repository;
             _customerService = customerService;
         }
 
@@ -23,7 +22,7 @@ namespace PaqJet.API.Controllers
         public async Task<IActionResult> GetAllCustomers()
         {
 
-            var customers = await _repository.GetCustomers();
+            var customers = await _customerService.GetCustomers();
             return Ok(customers);
         }
 
@@ -31,7 +30,7 @@ namespace PaqJet.API.Controllers
         [HttpGet("GetCustomer/{id}")]
         public async Task<ActionResult<CustomerModel>> GetCustomer(int id)
         {
-            var customer = await _repository.GetCustomerById(id);
+            var customer = await _customerService.GetCustomerById(id);
             if (customer == null)
             {
                 return NotFound();
@@ -83,7 +82,7 @@ namespace PaqJet.API.Controllers
                 return BadRequest();
             }
 
-            var success = await _repository.UpdateCustomer(request);
+            var success = await _customerService.UpdateCustomer(request);
 
             if (success)
             {

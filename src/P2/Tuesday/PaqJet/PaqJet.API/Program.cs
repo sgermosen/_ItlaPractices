@@ -1,4 +1,6 @@
+using EmployeeJet.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using PaqJet.Infrastructure;
 using PaqJet.Infrastructure.Interfaces;
 using PaqJet.Persistence;
 
@@ -24,8 +26,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//unit of works
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+
 //repositories
 builder.Services.AddTransient<ICustomerRepository,CustomerRepository>();
+builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
+
+//builder.Services.AddTransient<IPaqRepository, PaqRepository>();
+//services
 //builder.Services.AddTransient<CustomerService>();
 //builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddTransient<ICustomerService, CustomerService>();

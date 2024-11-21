@@ -71,12 +71,21 @@ namespace PaqJet.Infrastructure.Interfaces
             dbCustomer.Age = request.Age;
             dbCustomer.Sex = request.Sex;
 
+            dbCustomer.CreateDate = DateTime.Now;
+            dbCustomer.CreatedBy = "sgermosen";
+            dbCustomer.UpdateDate = DateTime.Now;
+            dbCustomer.UpdatedBy = "sgermosen";
+
             _context.Customers.Add(dbCustomer);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             return new AddCustomerResponse { Id = dbCustomer.Id };
 
         }
 
+        //public async Task<int> SaveChanges()
+        //{
+        //    return await _context.SaveChangesAsync();
+        //}
         public async Task<bool> UpdateCustomer(EditCustomerRequest request)
         {
             var dbCustomer = await _context.Customers.FindAsync(request.Id);

@@ -15,5 +15,6 @@ namespace PaqJet.Infrastructure.Interfaces
         Task<CustomerModel> GetCustomerById(int id);
         Task<AddCustomerResponse> AddCustomer(AddCustomerRequest request);
         Task<bool> UpdateCustomer(EditCustomerRequest request);
+        //Task<int> SaveChanges();
     }
 }

@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces\IPaqRepository.cs" />
+    <Compile Remove="Repositories\PaqRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PaqJet.Persistence\PaqJet.Persistence.csproj" />
   </ItemGroup>
 

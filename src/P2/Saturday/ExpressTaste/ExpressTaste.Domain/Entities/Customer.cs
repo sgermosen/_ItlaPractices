@@ -1,13 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ExpressTaste.Domain.Core;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExpressTaste.Domain.Entities
 {
    // [Table("CUSTOMERS")]
-    public class Customer
+    public class Customer: BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+        //[Key]
+        //public int Id { get; set; }
 
         [StringLength(50)] 
         public string Name { get; set; }

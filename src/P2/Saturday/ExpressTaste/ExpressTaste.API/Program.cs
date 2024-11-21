@@ -1,4 +1,5 @@
-using ExpressTaste.Domain;
+using ExpressTaste.Infraestructure.Repositories;
+using ExpressTaste.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,9 @@ builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
 
 //builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
 //    p.UseSqlite(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSqLite")));
- 
+//builder.Services.AddTransient<CustomerRepository>();
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+//builder.Services.AddTransient<ICustomerRepository,CustomerAwsRepository>();
 
 builder.Services.AddCors(options =>
 {

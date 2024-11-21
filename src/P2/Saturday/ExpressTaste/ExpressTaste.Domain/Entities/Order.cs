@@ -1,12 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ExpressTaste.Domain.Core;
+using System.ComponentModel.DataAnnotations;
 
 namespace ExpressTaste.Domain.Entities
 {
 
-    public class Order
+    public class Order: BaseEntity
     {
-        [Key]
-        public int Id { get; set; } 
+        //[Key]
+        //public int Id { get; set; } 
         
         public DateTime Date { get; set; }
 

@@ -12,7 +12,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,11 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Prestify.Common\Prestify.Common.csproj" />
     <ProjectReference Include="..\Prestify.Domain\Prestify.Domain.csproj" />
+    <ProjectReference Include="..\Prestify.Infrastructure\Prestify.Infrastructure.csproj" />
+    <ProjectReference Include="..\Prestify.Persistence\Prestify.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

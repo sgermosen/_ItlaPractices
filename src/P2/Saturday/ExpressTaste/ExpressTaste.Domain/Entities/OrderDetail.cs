@@ -1,8 +1,10 @@
-﻿namespace ExpressTaste.Domain.Entities
+﻿using ExpressTaste.Domain.Core;
+
+namespace ExpressTaste.Domain.Entities
 {
-    public class OrderDetail
+    public class OrderDetail: BaseEntity
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string itemDescription { get; set; }
     }
 }

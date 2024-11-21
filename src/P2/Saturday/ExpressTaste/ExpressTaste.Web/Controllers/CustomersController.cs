@@ -1,18 +1,11 @@
-﻿using ExpressTaste.Domain;
-using ExpressTaste.Domain.Entities;
-using ExpressTaste.Web.Models.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ExpressTaste.Web.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly ExpressTasteDbContext _context;
-
-        public CustomersController(ExpressTasteDbContext context)
+        public CustomersController()
         {
-            _context = context;
         }
 
         [HttpGet]
@@ -33,19 +26,7 @@ namespace ExpressTaste.Web.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-
-            return View(customer);
+            return View();
         }
 
         public IActionResult Create()
@@ -54,47 +35,31 @@ namespace ExpressTaste.Web.Controllers
         }
 
 
-       // [HttpPost]
-       //// [ValidateAntiForgeryToken]
-       // public async Task<IActionResult> Create(CreateCustomerViewModel vm)
-       // {
-       //     if (ModelState.IsValid)
-       //     {
-       //         var dbCustomer = new Customer();
+        // [HttpPost]
+        //// [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Create(CreateCustomerViewModel vm)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         var dbCustomer = new Customer();
 
-       //         dbCustomer.Name = vm.Name;
-       //         dbCustomer.Email = vm.Email;
-       //         dbCustomer.Phone = vm.Phone;
-       //         dbCustomer.Lastname = vm.Lastname;
-       //         dbCustomer.Gender = vm.Gender;
-       //         dbCustomer.IsActive = vm.IsActive;
+        //         dbCustomer.Name = vm.Name;
+        //         dbCustomer.Email = vm.Email;
+        //         dbCustomer.Phone = vm.Phone;
+        //         dbCustomer.Lastname = vm.Lastname;
+        //         dbCustomer.Gender = vm.Gender;
+        //         dbCustomer.IsActive = vm.IsActive;
 
-       //         _context.Customers.Add(dbCustomer);
-       //         await _context.SaveChangesAsync();
-       //         return RedirectToAction(nameof(Index));
-       //     }
-       //     return View();
-       // }
+        //         _context.Customers.Add(dbCustomer);
+        //         await _context.SaveChangesAsync();
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View();
+        // }
 
         public async Task<IActionResult> Edit(int id)
         {
-
-            var customerDb = await _context.Customers.FindAsync(id);
-            // var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
-            if (customerDb == null)
-            {
-                return NotFound();
-            }
-            var vm = new EditCustomerViewModel();
-            vm.Id = customerDb.Id;
-            vm.Name = customerDb.Name;
-            vm.Email = customerDb.Email;
-            vm.Phone = customerDb.Phone;
-            vm.Lastname = customerDb.Lastname;
-            vm.Gender = customerDb.Gender;
-            vm.IsActive = customerDb.IsActive;
-
-            return View(vm);
+            return View();
         }
 
         //[HttpPost]

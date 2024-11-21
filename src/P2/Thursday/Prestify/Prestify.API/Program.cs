@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Prestify.Domain;
 using Prestify.Domain.Entities;
+using Prestify.Infrastructure.Exceptions;
+using Prestify.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 //    p.UseSqlite(builder.Configuration.GetConnectionString("PrestifysqLitestr")));
 builder.Services.AddDbContext<PrestifyDbContext>(p =>
     p.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyStrConnection")));
+
+builder.Services.AddTransient<IPersonRepository,PersonRepository>();
+//builder.Services.AddScoped<PersonRepository>();
+//builder.Services.AddSingleton<PersonRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

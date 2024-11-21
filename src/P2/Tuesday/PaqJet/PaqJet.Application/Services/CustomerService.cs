@@ -1,41 +1,48 @@
 ﻿using PaqJet.API.Requests;
 using PaqJet.API.Responses;
+using PaqJet.Domain.Entities;
 using PaqJet.Infrastructure.Models;
 
 namespace PaqJet.Infrastructure.Interfaces
 {
-    public class CustomerService: ICustomerService
+    public class CustomerService : ICustomerService
     {
-        private readonly ICustomerRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
+       // private readonly IRepository<Customer> _repository;
 
-        public CustomerService(ICustomerRepository repository)
+        public CustomerService(IUnitOfWork unitOfWork)//, IRepository<Customer> repository)
         {
-             _repository = repository;
+            _unitOfWork = unitOfWork;
+         //   _repository = repository;
         }
 
-        //public async Task<List<CustomerModel>> GetCustomers()
-        //{
-        //    var customers = new List<CustomerModel>();
-        //    var customersDb = await _context.Customers.ToListAsync();
-        //    if (!customersDb.Any())
-        //    {
-        //        throw new Exception("Customers not found");
-        //    }
-        //    foreach (var customer in customersDb)
-        //    {
-        //        customers.Add(new CustomerModel
-        //        {
-        //            IsActive = customer.IsActive,
-        //            Name = customer.Name,
-        //            Age = customer.Age,
-        //            LastName = customer.LastName,
-        //            Sex = customer.Sex,
-        //        });
-        //    }
+        public async Task<List<CustomerModel>> GetCustomers()
+        {
+            var customers = new List<CustomerModel>();
 
-        //    return customers;
+            //var inf = await _repository.Get();
+            var customersDb = await _unitOfWork.CustomerRepository.GetCustomers();
 
-        //}
+
+            if (!customersDb.Any())
+            {
+                throw new Exception("Customers not found");
+            }
+            foreach (var customer in customersDb)
+            {
+                customers.Add(new CustomerModel
+                {
+                    IsActive = customer.IsActive,
+                    Name = customer.Name,
+                    Age = customer.Age,
+                    LastName = customer.LastName,
+                    Sex = customer.Sex,
+                });
+            }
+
+            return customers;
+
+        }
 
         //public async Task<CustomerModel> GetCustomerById(int id)
         //{
@@ -60,14 +67,38 @@ namespace PaqJet.Infrastructure.Interfaces
 
             if (string.IsNullOrEmpty(request.Name))
             {
-              throw new Exception("Name is required");
+                throw new Exception("Name is required");
             }
             if (string.IsNullOrEmpty(request.LastName))
             {
                 throw new Exception("Lastname is required");
             }
 
-              return await _repository.AddCustomer(request); 
+            //var list = new List<AddCustomerRequest>();
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+
+            //foreach (var item in list)
+            //{
+            //    await _unitOfWork.CustomerRepository.AddCustomer(item);
+
+            //    //  await _repository.AddCustomer(request); 
+            //}
+            // await _repository.SaveChanges();
+            var response = await _unitOfWork.CustomerRepository.AddCustomer(request);
+            await _unitOfWork.CommitAsync();
+            return null;
 
         }
 
@@ -76,11 +107,7 @@ namespace PaqJet.Infrastructure.Interfaces
             throw new NotImplementedException();
         }
 
-        public Task<List<CustomerModel>> GetCustomers()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public Task<bool> UpdateCustomer(EditCustomerRequest request)
         {
             throw new NotImplementedException();
