@@ -8,6 +8,7 @@ namespace Prestify.Infrastructure.Exceptions
     {
         Task<List<PersonDto>> GetPeople();
         Task<PersonDto> GetPerson(int id);
-        Task<NewPersonResponse> AddPerson(NewPersonRequest request);
+        Task<bool> AddPerson(NewPersonRequest request);
+        //Task<int> SaveChanges();
     }
 }

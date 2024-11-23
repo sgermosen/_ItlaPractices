@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Prestify.Common.Dtos;
 using Prestify.Common.Requests;
-using Prestify.Common.Responses;
-using Prestify.Infrastructure.Exceptions;
+using Prestify.Domain.Entities;
+using Prestify.Infrastructure;
+using Prestify.Infrastructure.Interfaces;
+using Prestify.Infrastructure.Models;
 
 namespace Prestify.API.Controllers
 {
@@ -10,11 +12,21 @@ namespace Prestify.API.Controllers
     [Route("[controller]")]
     public class PeopleController : ControllerBase
     {
-        private readonly IPersonRepository _repo;
+        //private readonly IPersonRepository _repo;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<Person> personRepo;
 
-        public PeopleController(IPersonRepository repo)
+        //private readonly LoanRepository loanRepository;
+
+        public PeopleController(//IPersonRepository repo, 
+            UnitOfWork unitOfWork,//, LoanRepository loanRepository
+            IRepository<Person> personRepo 
+                                 )
         {
-            _repo = repo;
+            //_repo = repo;
+            this._unitOfWork = unitOfWork;
+            this.personRepo = personRepo;
+            //this.loanRepository = loanRepository;
         }
 
 
@@ -44,7 +56,7 @@ namespace Prestify.API.Controllers
 
 
         [HttpPost("AddPerson")]
-        public async Task<ActionResult<NewPersonResponse>> AddPerson(NewPersonRequest request)
+        public async Task<IActionResult> AddPerson(NewPersonRequest request)
         {
 
             if (string.IsNullOrEmpty(request.Name))
@@ -58,7 +70,36 @@ namespace Prestify.API.Controllers
             if (!request.Email.Contains("@"))
                 return BadRequest("you need to provide a valid email");
 
-            return await _repo.AddPerson(request);
+            //var list = new List<NewPersonRequest>();
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+            //list.Add(request);
+
+            //foreach (var item in list)
+            //{
+            var loadnDto = new LoanModel();
+            loadnDto.LoanNumber = "ASDASDASDA";
+
+            await _unitOfWork.PersonRepository.Add(request);
+            await _unitOfWork.LoanRepository.Add(loadnDto);
+            //await _repo.AddPerson(request);
+            //await personRepo.Add(
+            //await loanRepository.Add(loadnDto);
+
+
+
+            // await _repo.AddPerson(item);
+            //}
+            //await _repo.SaveChanges();
+            await _unitOfWork.CommitAsync();
+            return Ok();
         }
 
         [HttpPut("UpdatePerson/{id}")]

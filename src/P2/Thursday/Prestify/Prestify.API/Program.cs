@@ -1,7 +1,9 @@
+
 using Microsoft.EntityFrameworkCore;
-using Prestify.Domain;
-using Prestify.Domain.Entities;
+using Prestify.Infrastructure;
 using Prestify.Infrastructure.Exceptions;
+using Prestify.Infrastructure.Interfaces;
+using Prestify.Infrastructure.Repositories;
 using Prestify.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PrestifyDbContext>(p =>
     p.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyStrConnection")));
 
-builder.Services.AddTransient<IPersonRepository,PersonRepository>();
+builder.Services.AddTransient<IPersonRepository, PersonRepository>();
+builder.Services.AddTransient<ILoanRepository, LoanRepository>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
+
 //builder.Services.AddScoped<PersonRepository>();
 //builder.Services.AddSingleton<PersonRepository>();
 

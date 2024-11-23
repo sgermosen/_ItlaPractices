@@ -7,7 +7,7 @@ using Prestify.Persistence;
 
 namespace Prestify.Infrastructure.Exceptions
 {
-    public class PersonRepository: IPersonRepository
+    public class PersonRepository : IPersonRepository
     {
         private readonly PrestifyDbContext _context;
         public PersonRepository(PrestifyDbContext context)
@@ -38,15 +38,17 @@ namespace Prestify.Infrastructure.Exceptions
             return FromPersonToPersonDto(personDb);
         }
 
-        public async Task<NewPersonResponse> AddPerson(NewPersonRequest request)
+        public async Task<bool> AddPerson(NewPersonRequest request)
         {
-            var personDb = FromPersonDtoToPerson(request);
-
-            _context.People.Add(personDb);
-            await _context.SaveChangesAsync();
-
-            return new NewPersonResponse { Id = personDb.Id };
+            var personDb = FromPersonDtoToPerson(request); 
+            _context.People.Add(personDb); 
+            return true;
         }
+
+        //public async Task<int> SaveChanges()
+        //{
+        //    return await _context.SaveChangesAsync();
+        //}
 
         private PersonDto FromPersonToPersonDto(Person personDb)
         {
@@ -68,7 +70,7 @@ namespace Prestify.Infrastructure.Exceptions
             {
                 Address = dto.Address,
                 Dni = dto.Dni,
-                Email = dto.Email, 
+                Email = dto.Email,
                 LastNames = dto.LastNames,
                 Name = dto.Name,
                 Phone = dto.Phone,
@@ -87,6 +89,6 @@ namespace Prestify.Infrastructure.Exceptions
                 Phone = dto.Phone,
             };
         }
- 
+
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prestify.Infrastructure.Models;
 
-namespace Prestify.Infrastructure.Exceptions
+namespace Prestify.Infrastructure.Interfaces
 {
     public interface ILoanRepository
     {
+        Task<bool> Add(LoanModel request);
     }
 }
