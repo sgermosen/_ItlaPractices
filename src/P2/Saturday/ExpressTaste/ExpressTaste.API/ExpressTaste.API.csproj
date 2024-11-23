@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ExpressTaste.Domain\ExpressTaste.Domain.csproj" />
     <ProjectReference Include="..\ExpressTaste.Infraestructure\ExpressTaste.Infraestructure.csproj" />
     <ProjectReference Include="..\ExpressTaste.Persistence\ExpressTaste.Persistence.csproj" />

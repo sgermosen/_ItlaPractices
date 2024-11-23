@@ -1,6 +1,6 @@
 ﻿using ExpressTaste.Domain.Entities;
 
-namespace ExpressTaste.API.Dtos
+namespace ExpressTaste.Common.Dtos
 {
     public class CustomersDto
     {

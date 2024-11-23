@@ -1,4 +1,4 @@
-﻿namespace ExpressTaste.API.Dtos
+﻿namespace ExpressTaste.Common.Requests
 {
     public class CreateCustomerRequest
     {  

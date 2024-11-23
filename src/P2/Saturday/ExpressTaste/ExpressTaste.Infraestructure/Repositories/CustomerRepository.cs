@@ -1,12 +1,14 @@
-﻿using ExpressTaste.API.Dtos;
+﻿using ExpressTaste.Common.Dtos;
+using ExpressTaste.Common.Requests;
+using ExpressTaste.Common.Responses;
 using ExpressTaste.Domain.Entities;
+using ExpressTaste.Infraestructure.Interfaces;
 using ExpressTaste.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer.ValueGeneration.Internal;
 
 namespace ExpressTaste.Infraestructure.Repositories
 {
-    public class CustomerRepository: ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly ExpressTasteDbContext _context;
 
@@ -74,6 +76,6 @@ namespace ExpressTaste.Infraestructure.Repositories
             return new CreateCustomerResponse { Id = dbCustomer.Id };
         }
 
-       
+
     }
 }

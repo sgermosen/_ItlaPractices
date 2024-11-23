@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ExpressTaste.Web.Models.ViewModels
+﻿namespace ExpressTaste.Web.Models.ViewModels
 {
     public class CustomerViewModel
     {
-       // public int Id { get; set; }
 
         public string Name { get; set; }
 

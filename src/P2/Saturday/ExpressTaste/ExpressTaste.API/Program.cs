@@ -11,7 +11,6 @@ builder.Services.AddDbContext<ExpressTasteDbContext>(p =>
 //    p.UseSqlite(builder.Configuration.GetConnectionString("ExpressTasteStrConnectionSqLite")));
 //builder.Services.AddTransient<CustomerRepository>();
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
-//builder.Services.AddTransient<ICustomerRepository,CustomerAwsRepository>();
 
 builder.Services.AddCors(options =>
 {
@@ -21,7 +20,6 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("https://localhost:7167")
             .AllowAnyMethod()
             .AllowAnyHeader();
-            //.SetIsOriginAllowedToAllowWildcardSubdomains();
         });
 });
 
@@ -31,7 +29,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

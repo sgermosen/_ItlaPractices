@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Persistence\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ExpressTaste.Common\ExpressTaste.Common.csproj" />
     <ProjectReference Include="..\ExpressTaste.Persistence\ExpressTaste.Persistence.csproj" />
   </ItemGroup>

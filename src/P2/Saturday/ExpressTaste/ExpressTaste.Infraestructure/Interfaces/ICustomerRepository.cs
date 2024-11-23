@@ -1,6 +1,8 @@
-﻿using ExpressTaste.API.Dtos;
+﻿using ExpressTaste.Common.Dtos;
+using ExpressTaste.Common.Requests;
+using ExpressTaste.Common.Responses;
 
-namespace ExpressTaste.Infraestructure.Repositories
+namespace ExpressTaste.Infraestructure.Interfaces
 {
     public interface ICustomerRepository
     {
