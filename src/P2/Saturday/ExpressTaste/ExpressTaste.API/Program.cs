@@ -1,3 +1,4 @@
+using ExpressTaste.Infraestructure.Interfaces;
 using ExpressTaste.Infraestructure.Repositories;
 using ExpressTaste.Persistence;
 using Microsoft.EntityFrameworkCore;

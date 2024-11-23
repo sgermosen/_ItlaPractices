@@ -1,5 +1,7 @@
-﻿using ExpressTaste.API.Dtos;
-using ExpressTaste.Infraestructure.Repositories;
+﻿using ExpressTaste.Common.Dtos;
+using ExpressTaste.Common.Requests;
+using ExpressTaste.Common.Responses;
+using ExpressTaste.Infraestructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpressTaste.API.Controllers
@@ -20,7 +22,7 @@ namespace ExpressTaste.API.Controllers
         public async Task<ActionResult<CustomerDto>> GetCustomer(int id)
         {
 
-            var customer = await _repo.Get(id);
+            var customer = await _repo.GetByIdAsync(id);
             if (customer == null)
             {
                 return NotFound();
@@ -31,13 +33,13 @@ namespace ExpressTaste.API.Controllers
         [HttpGet(nameof(GetCustomers))]
         public async Task<ActionResult<List<CustomerDto>>> GetCustomers()
         {
-            return await _repo.GetAll(); ;
+            return await _repo.GetAllAsync(); ;
         }
 
         [HttpPost(nameof(AddCustomer))]
         public async Task<ActionResult<CreateCustomerResponse>> AddCustomer(CreateCustomerRequest request)
         {
-            return await _repo.Add(request);
+            return await _repo.AddAsync(request);
         }
     }
 }
