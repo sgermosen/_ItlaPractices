@@ -129,19 +129,19 @@ Console.WriteLine("Please insert an integer number from 1 to 50");
 
 //var num1 = Console.ReadLine();   //this is a variable for register the typed number of the user 
 //naming conventions
-var typedNumberFromUser = string.Empty;    
+var typedNumberFromUser = string.Empty;    //Camel
 var _typedNumberFromUser =string.Empty; //if is a private
-var TypedNumberFromUser =string.Empty; //for methods or properties
-const string TYPED_NUMBER_FROM_USER = "Const Value"; //for cosntants
+var TypedNumberFromUser =string.Empty; //for methods or properties Pascal
+const string TYPED_NUMBER_FROM_USER = "Const Value"; //for cosntants Upper
 var todas_son_minusculas_separo_con_rayita_abajo = "";
 
 typedNumberFromUser = "4";
 
 int iAcceptOnlyIntValues = 999999999;
 long iAcceptOnlyIntValues2 = 999999999999999999;
-decimal IAcceptDecimalValuesButICanAcceptIntsFloatsAndDoubles = 15.8m;
-double IAcceptDoubles = 15.8;
-float IAcceptFloats = 15.8f;
+decimal IAcceptDecimalValuesButICanAcceptIntsFloatsAndDoubles = 123456789.1234567890123456789m; //128 bits  28-29 digits
+double IAcceptDoubles = 123456789.123456789 //64 bits 15-16 digits;
+float IAcceptFloats = 123.4567f; //32 bit 7 digits
 bool iOnlyAcceptTrueOrFalse ; //if is false i dont have to expecify it
 string IAcceptStringValues = "";
 string IAcceptStringValues2 = string.Empty;
