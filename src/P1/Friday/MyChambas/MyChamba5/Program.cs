@@ -41,7 +41,7 @@ while (running)
             {
                 case 1:
                     {
-                        result = AddList(typedNumbers);
+                        result = SumList(typedNumbers);
                     }
                     break;
                 case 2:
@@ -92,28 +92,32 @@ while (running)
     }
 
 }
+
 //procceess
-static void AddByRef(ref decimal valueToModify, decimal value)
+static void MakeSumByRef(ref decimal valueToModify, decimal value)
 {
     valueToModify += value;
 }
 
 //function
-static decimal Add(decimal valueToModify, decimal value)
+static decimal MakeSum(decimal valueToModify, decimal value)
 {
     valueToModify += value;
     return valueToModify;
+    // return string.Empty
 }
 
-static decimal AddList(List<decimal> typedNumbers)
+static decimal SumList(List<decimal> typedNumbers)
 {
     decimal result = 0;
     foreach (int typedNumber in typedNumbers)
     {
-        result = Add(result, typedNumber);
-        // AddByRef(ref result, typedNumber);
+     
+        result = MakeSum(result, typedNumber);
+        //  MakeSumByRef(ref result, typedNumber);
         // result += typedNumber;
     }
+    typedNumbers[0] = 1;
     return result;
 }
 
